@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Research · AIMS Institute · Tec de Monterrey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="partials.css">
+<style>
+  .pillar {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 80px;
+    padding: 90px 0;
+    border-top: 1px solid var(--aims-line);
+  }
+  .pillar:first-of-type { border-top: 0; }
+  .pillar .marker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--aims-accent);
+    margin-bottom: 18px;
+  }
+  .pillar h2 {
+    font-family: var(--font-serif);
+    font-size: 44px;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin: 0 0 22px;
+    color: var(--aims-ink);
+  }
+  .pillar .lead-p {
+    font-family: var(--font-serif);
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--aims-text);
+    font-weight: 300;
+    margin: 0 0 28px;
+  }
+  .pillar .focus-list {
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+  }
+  .pillar .focus-list li {
+    font-size: 14.5px;
+    color: var(--aims-text);
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .pillar .focus-list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 9px;
+    width: 12px; height: 1px;
+    background: var(--aims-accent);
+  }
+  .pillar .left-col {
+    position: sticky;
+    top: 110px;
+    align-self: start;
+  }
+  .pillar .left-col .index {
+    font-family: var(--font-serif);
+    font-size: 96px;
+    line-height: 1;
+    color: var(--aims-line);
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+  .pillar .visual {
+    aspect-ratio: 16/10;
+    background: var(--aims-bone);
+    border: 1px solid var(--aims-line);
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+  .pillar .visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,22,40,0.1) 0%, rgba(10,22,40,0.35) 100%);
+  }
+  .pillar .meta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--aims-line);
+  }
+  .pillar .meta-row .label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--aims-text-faint);
+    margin-bottom: 8px;
+  }
+  .pillar .meta-row .val {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    color: var(--aims-deep);
+    letter-spacing: -0.01em;
+  }
+
+  .pillar.featured {
+    background: var(--aims-ink);
+    color: #fff;
+    margin: 60px 0;
+    padding: 100px 0;
+    border-top: 0;
+  }
+  .pillar.featured h2 { color: #fff; }
+  .pillar.featured .lead-p { color: #d3dbe4; }
+  .pillar.featured .focus-list li { color: #d3dbe4; }
+  .pillar.featured .meta-row { border-top-color: rgba(255,255,255,0.2); }
+  .pillar.featured .meta-row .label { color: #6f7e92; }
+  .pillar.featured .meta-row .val { color: #fff; }
+  .pillar.featured .left-col .index { color: rgba(255,255,255,0.1); }
+  .pillar.featured .visual { border-color: rgba(255,255,255,0.1); }
+
+  .approach {
+    background: var(--aims-bone);
+    padding: 100px 0;
+  }
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .approach-card {
+    background: var(--aims-paper);
+    border: 1px solid var(--aims-line);
+    padding: 36px 32px;
+  }
+  .approach-card .step {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--aims-accent);
+    margin-bottom: 16px;
+  }
+  .approach-card h3 {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    line-height: 1.15;
+    color: var(--aims-ink);
+    margin: 0 0 14px;
+  }
+  .approach-card p {
+    font-size: 14.5px;
+    color: var(--aims-text-muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Mobile */
+  @media (max-width: 1024px) {
+    .pillar { grid-template-columns: 1fr; gap: 32px; padding: 64px 0; }
+    .pillar .left-col { position: static; }
+    .pillar .left-col .index { font-size: 72px; margin-bottom: 12px; }
+    .pillar h2 { font-size: 34px; }
+    .approach-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .pillar { gap: 24px; padding: 52px 0; }
+    .pillar .focus-list { grid-template-columns: 1fr; }
+    .pillar .meta-row { grid-template-columns: 1fr 1fr; }
+    .approach { padding: 60px 0; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .pillar.featured { margin: 40px 0; padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-links">
+      <a href="#">Tecnológico de Monterrey</a>
+      <a href="#">VP of Research</a>
+      <a href="#">Directory</a>
+    </div>
+    <div class="topbar-meta">
+      <span>MTY · CDMX · GDL · QRO</span>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <div class="brand-mark"><span>A</span></div>
+      <div class="brand-text">
+        <span class="name">AIMS Institute</span>
+        <span class="sub">Tec de Monterrey</span>
+      </div>
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="investigacion.html" class="active">Research</a>
+      <a href="personas.html">People</a>
+      <a href="alianzas.html">Industry Partners</a>
+      <a href="events.html">Events</a>
+      <a href="publications.html">Publications</a>
+      <a href="alianzas.html" class="btn btn-primary nav-mobile-cta">Partner with us <span class="arrow">→</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a href="alianzas.html" class="btn btn-primary">Partner with us <span class="arrow">→</span></a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero" data-screen-label="01 Hero Research">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Research</span>
+    </div>
+    <h1>Four integrated areas. <span class="italic" style="color: var(--aims-accent);">One shared lens:</span> industrial impact.</h1>
+    <p>Research at AIMS doesn't operate in silos. Manufacturing, AI, supply chains and materials deliberately intersect to produce deployable solutions, not isolated findings.</p>
+  </div>
+</section>
+
+<!-- FILTER STRIP -->
+<section style="background: #fff; border-bottom: 1px solid var(--aims-line); padding: 24px 0;">
+  <div class="container" style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+    <span class="eyebrow" style="margin-right: 12px;">FILTER BY</span>
+    <span class="tag solid">All areas</span>
+    <span class="tag">Smart Manufacturing</span>
+    <span class="tag">Industrial AI</span>
+    <span class="tag">Supply Chain</span>
+    <span class="tag">LIFT Lab</span>
+    <span style="margin-left: auto; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--aims-text-muted);">04 AREAS · +20 LABS · +40 RESEARCHERS</span>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="container" data-screen-label="02 Pillars" style="padding-top: 40px;">
+
+  <article class="pillar" id="smart-manufacturing">
+    <div class="left-col">
+      <div class="index">01</div>
+      <div class="marker">Area 01</div>
+      <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--aims-text-muted); line-height: 2;">
+        +12 RESEARCHERS<br>
+        06 LABORATORIES<br>
+        04 CAMPUSES
+      </div>
+    </div>
+    <div>
+      <div class="visual" style="background-image: url('https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=1000&q=80');">
+        <div class="visual-overlay"></div>
+      </div>
+
+      <div class="marker">Smart Manufacturing</div>
+      <h2>Smart manufacturing, automation &amp; materials.</h2>
+      <p class="lead-p">
+        Convergence of advanced processes, robotics and materials innovation. The emphasis is on connecting materials design, process optimization and system-level performance — enabling next-generation production capabilities.
+      </p>
+
+      <ul class="focus-list">
+        <li>Sustainable and energy-efficient manufacturing</li>
+        <li>Advanced and high-performance materials</li>
+        <li>Collaborative robotics and flexible cells</li>
+        <li>Multi-objective process optimization</li>
+        <li>Additive and hybrid manufacturing</li>
+        <li>Vision-based inspection and quality systems</li>
+      </ul>
+
+      <div class="meta-row">
+        <div>
+          <div class="label">Lead</div>
+          <div class="val">Dr. Ricardo Ortega</div>
+        </div>
+        <div>
+          <div class="label">Active sponsors</div>
+          <div class="val">07 industry partners</div>
+        </div>
+        <div>
+          <div class="label">Publications 2024–26</div>
+          <div class="val">+38 papers</div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="pillar featured" id="ai-industrial">
+    <div class="container" style="display: contents;">
+      <div class="left-col">
+        <div class="index">02</div>
+        <div class="marker">Area 02</div>
+        <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: #8aa0bd; line-height: 2;">
+          +14 RESEARCHERS<br>
+          05 LABORATORIES<br>
+          MULTI-SCALE INTEGRATION
+        </div>
+      </div>
+      <div>
+        <div class="visual" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1000&q=80');">
+          <div class="visual-overlay" style="background: linear-gradient(to bottom, rgba(10,22,40,0.25), rgba(10,22,40,0.6));"></div>
+        </div>
+
+        <div class="marker">Industrial AI</div>
+        <h2>Artificial intelligence for industrial systems.</h2>
+        <p class="lead-p">
+          AI doesn't operate in isolation. Its effectiveness depends on integration with sensing systems, computational infrastructure and physical layers — control, robotics, energy platforms. AIMS moves from isolated models to fully integrated industrial applications.
+        </p>
+
+        <ul class="focus-list">
+          <li>Machine learning and production inference</li>
+          <li>Plant and line digital twins</li>
+          <li>Autonomous and adaptive decision-making</li>
+          <li>Computer vision and distributed sensing</li>
+          <li>Energy and operations optimization</li>
+          <li>Trustworthy AI and observability systems</li>
+        </ul>
+
+        <div class="meta-row">
+          <div>
+            <div class="label">Lead</div>
+            <div class="val">Dr. María F. Ríos</div>
+          </div>
+          <div>
+            <div class="label">Industry pilots</div>
+            <div class="val">12 active</div>
+          </div>
+          <div>
+            <div class="label">Patents 2024–26</div>
+            <div class="val">06 registered</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="pillar" id="supply-chain">
+    <div class="left-col">
+      <div class="index">03</div>
+      <div class="marker">Area 03</div>
+      <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--aims-text-muted); line-height: 2;">
+        +10 RESEARCHERS<br>
+        04 LABORATORIES<br>
+        SCOPE 3 FOCUS
+      </div>
+    </div>
+    <div>
+      <div class="visual" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=80');">
+        <div class="visual-overlay"></div>
+      </div>
+
+      <div class="marker">Supply Chain</div>
+      <h2>Supply chain &amp; logistics systems.</h2>
+      <p class="lead-p">
+        End-to-end supply chain design, optimization and transformation. We integrate AI, optimization methods and empirical data to address resilience, efficiency and sustainability — with particular attention to Scope 3, regulatory pressure and global volatility.
+      </p>
+
+      <ul class="focus-list">
+        <li>Digital transformation of supply chains</li>
+        <li>Smart logistics and last-mile delivery</li>
+        <li>Distribution network design strategies</li>
+        <li>Resilient and disruption-resistant chains</li>
+        <li>Warehouses of the future</li>
+        <li>Scope 3 visibility and traceability</li>
+      </ul>
+
+      <div class="meta-row">
+        <div>
+          <div class="label">Lead</div>
+          <div class="val">Dr. Velázquez Martínez</div>
+        </div>
+        <div>
+          <div class="label">Active industry projects</div>
+          <div class="val">+15 active</div>
+        </div>
+        <div>
+          <div class="label">Industry reports</div>
+          <div class="val">04 annual</div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="pillar" id="lift">
+    <div class="left-col">
+      <div class="index">04</div>
+      <div class="marker">Area 04 · LIFT</div>
+      <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--aims-text-muted); line-height: 2;">
+        IN COLLABORATION<br>
+        WITH MIT CTL<br>
+        04 COUNTRIES · +5K SMEs
+      </div>
+    </div>
+    <div>
+      <div class="visual" style="background-image: url('https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1000&q=80');">
+        <div class="visual-overlay"></div>
+      </div>
+
+      <div class="marker" style="display: flex; gap: 14px; align-items: center;">
+        LIFT Lab
+        <span class="mit-badge" style="font-size: 10px;">● IN COLLABORATION WITH MIT CTL</span>
+      </div>
+      <h2>Low-Income Firms Transformation Lab.</h2>
+      <p class="lead-p">
+        Applying AI to the challenge of micro and small enterprises, particularly in low-data environments. Built at MIT CTL and actively expanding at Tec de Monterrey, it combines technological innovation with large-scale field deployment — measurable productivity, inclusion and resilience.
+      </p>
+
+      <ul class="focus-list">
+        <li>AI with scarce and imperfect data</li>
+        <li>AI avatars and tutors for training</li>
+        <li>Image recognition for inventory</li>
+        <li>AI assistants for SMEs</li>
+        <li>Integration with inclusive supply chains</li>
+        <li>Public policy and social impact</li>
+      </ul>
+
+      <div class="meta-row">
+        <div>
+          <div class="label">MX Director</div>
+          <div class="val">Ana L. Estrada</div>
+        </div>
+        <div>
+          <div class="label">Origin</div>
+          <div class="val">MIT CTL · 2018</div>
+        </div>
+        <div>
+          <div class="label">MX Deployment</div>
+          <div class="val">2026 · Ongoing</div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- APPROACH -->
+<section class="approach" data-screen-label="03 Model">
+  <div class="container">
+    <div class="section-head" style="border-bottom-color: var(--aims-stone);">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Research model</span>
+        <h2 class="h1">Impact research,<br>not <span class="italic" style="color: var(--aims-accent);">isolated discovery.</span></h2>
+      </div>
+      <div class="right">
+        <p style="font-family: var(--font-serif); font-size: 18px; line-height: 1.5; color: var(--aims-text-muted); margin: 0;">
+          AIMS doesn't replace disciplinary capabilities. It integrates and amplifies them — and orients them toward deployable outcomes, not isolated publications.
+        </p>
+      </div>
+    </div>
+
+    <div class="approach-grid">
+      <div class="approach-card">
+        <div class="step">01 / Identify</div>
+        <h3>A real industrial challenge</h3>
+        <p>We work from the industrial partner's challenge: a problem with a defined impact metric, not an abstract academic topic.</p>
+      </div>
+      <div class="approach-card">
+        <div class="step">02 / Integrate</div>
+        <h3>Multi-disciplinary by design</h3>
+        <p>We cross areas and campuses from day one — manufacturing with AI, supply chain with materials — because real problems don't respect disciplines.</p>
+      </div>
+      <div class="approach-card">
+        <div class="step">03 / Deploy</div>
+        <h3>Pilots in plant and field</h3>
+        <p>Deployment is part of the work, not a later step. We validate under real conditions with real data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-grid">
+      <h2>Have a challenge that requires capability integration, not just an algorithm?</h2>
+      <div class="cta-actions">
+        <a href="alianzas.html" class="btn btn-dark">Become an industrial partner <span class="arrow">→</span></a>
+        <a href="personas.html" class="btn btn-ghost-light">Meet the faculty</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 24px;">
+          <div class="brand-mark"><span>A</span></div>
+          <div class="brand-text">
+            <span class="name">AIMS Institute</span>
+            <span class="sub">Tec de Monterrey</span>
+          </div>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; color: #8aa0bd; max-width: 320px; margin: 0;">
+          AI Institute for Manufacturing and Supply Chains.<br>
+          Campuses in Monterrey · CDMX · Guadalajara · Querétaro.
+        </p>
+      </div>
+      <div><h4>Research</h4><ul><li><a href="#">Smart Manufacturing</a></li><li><a href="#">Industrial AI</a></li><li><a href="#">Supply Chain &amp; Logistics</a></li><li><a href="#">LIFT Lab</a></li></ul></div>
+      <div><h4>Institute</h4><ul><li><a href="personas.html">Faculty</a></li><li><a href="alianzas.html">Partnerships</a></li><li><a href="events.html">Events</a></li><li><a href="publications.html">Publications</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="#">Newsletter</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">YouTube</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4>Tec de Monterrey</h4><ul><li><a href="#">VP of Research</a></li><li><a href="#">tec.mx/research</a></li><li><a href="#">Doctoral Programs</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AIMS · TECNOLÓGICO DE MONTERREY</span>
+      <span>JOSUEVM@TEC.MX  ·  Av. Eugenio Garza Sada 2501, Monterrey, NL</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const nav = document.getElementById('mainNav');
+if (toggle && nav) {
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    toggle.classList.toggle('open');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+  });
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+</script>
+</body>
+</html>

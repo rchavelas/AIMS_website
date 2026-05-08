@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Events · AIMS Institute · Tec de Monterrey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="partials.css">
+<style>
+  /* ===== Event filter bar ===== */
+  .event-filter {
+    background: #fff;
+    border-bottom: 1px solid var(--aims-line);
+    padding: 24px 0;
+    position: sticky;
+    top: 86px;
+    z-index: 10;
+  }
+  .event-filter .row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  /* ===== Featured event ===== */
+  .event-featured {
+    padding: 80px 0;
+    background: var(--aims-paper);
+    border-bottom: 1px solid var(--aims-line);
+  }
+  .event-feat-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .event-feat-img {
+    aspect-ratio: 16/10;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+  .event-feat-img .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,48,95,0.55), rgba(10,22,40,0.3));
+  }
+  .event-feat-img .date-badge {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: var(--aims-accent);
+    color: #fff;
+    padding: 12px 18px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .event-feat-body .type-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--aims-accent);
+    margin-bottom: 18px;
+  }
+  .event-feat-body h2 {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 3.4vw, 46px);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: var(--aims-ink);
+    margin: 0 0 20px;
+  }
+  .event-feat-body p {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--aims-text-muted);
+    margin: 0 0 28px;
+    max-width: 480px;
+  }
+  .event-meta-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-top: 24px;
+    border-top: 1px solid var(--aims-line);
+    margin-top: 28px;
+  }
+  .event-meta-row .meta-item .lbl {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--aims-text-faint);
+    margin-bottom: 6px;
+  }
+  .event-meta-row .meta-item .val {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--aims-ink);
+  }
+
+  /* ===== Upcoming events grid ===== */
+  .upcoming-section {
+    padding: 80px 0;
+    background: var(--aims-bone);
+  }
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .event-card {
+    background: #fff;
+    border: 1px solid var(--aims-line);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .event-card:hover {
+    border-color: var(--aims-deep);
+    transform: translateY(-2px);
+  }
+  .event-card .card-img {
+    aspect-ratio: 16/9;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .event-card .card-img .type-tag {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: var(--aims-ink);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+  }
+  .event-card .card-body {
+    padding: 22px 24px 26px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .event-card .card-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--aims-accent);
+    margin-bottom: 10px;
+  }
+  .event-card h3 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--aims-ink);
+    margin: 0 0 10px;
+  }
+  .event-card p {
+    font-size: 14px;
+    color: var(--aims-text-muted);
+    line-height: 1.55;
+    margin: 0 0 18px;
+    flex: 1;
+  }
+  .event-card .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px dashed var(--aims-line);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--aims-text-muted);
+  }
+  .event-card .card-footer .register-link {
+    color: var(--aims-blue);
+    font-weight: 500;
+  }
+  .event-card .card-footer .register-link:hover { color: var(--aims-accent); }
+
+  /* ===== Past events list ===== */
+  .past-section {
+    padding: 80px 0;
+    background: var(--aims-paper);
+  }
+  .past-list {
+    margin-top: 48px;
+    border-top: 1px solid var(--aims-ink);
+  }
+  .past-item {
+    display: grid;
+    grid-template-columns: 120px 1fr 200px 160px;
+    gap: 32px;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--aims-line);
+    transition: background 0.15s ease;
+  }
+  .past-item:hover { background: var(--aims-bone); margin: 0 -20px; padding: 24px 20px; }
+  .past-item .past-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--aims-text-muted);
+  }
+  .past-item h4 {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    color: var(--aims-ink);
+    margin: 0 0 4px;
+    font-weight: 500;
+  }
+  .past-item .past-sub {
+    font-size: 13px;
+    color: var(--aims-text-muted);
+  }
+  .past-item .past-type {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--aims-text-faint);
+    text-align: right;
+  }
+  .past-item .past-links {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .past-item .past-links a { color: var(--aims-blue); }
+  .past-item .past-links a:hover { color: var(--aims-accent); }
+
+  /* ===== Newsletter CTA ===== */
+  .newsletter-band {
+    background: var(--aims-ink);
+    padding: 80px 0;
+  }
+  .newsletter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .newsletter-band h2 { color: #fff; font-family: var(--font-serif); font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 16px; }
+  .newsletter-band p { color: #b6c2d2; font-family: var(--font-serif); font-size: 18px; line-height: 1.5; max-width: 440px; margin: 0; }
+  .newsletter-form { display: flex; gap: 0; }
+  .newsletter-form input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-right: 0;
+    background: rgba(255,255,255,0.07);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    color: #fff;
+    outline: none;
+    border-radius: 0;
+  }
+  .newsletter-form input::placeholder { color: #6f7e92; }
+  .newsletter-form input:focus { border-color: var(--aims-accent); background: rgba(255,255,255,0.1); }
+  .newsletter-form button {
+    padding: 14px 24px;
+    background: var(--aims-accent);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+  }
+  .newsletter-form button:hover { background: #d04915; }
+
+  /* Mobile */
+  @media (max-width: 1024px) {
+    .event-feat-grid { grid-template-columns: 1fr; gap: 36px; }
+    .events-grid { grid-template-columns: repeat(2, 1fr); }
+    .past-item { grid-template-columns: 100px 1fr 140px; }
+    .past-item .past-links { grid-column: 1 / -1; justify-content: flex-start; }
+    .newsletter-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+  @media (max-width: 768px) {
+    .event-featured { padding: 52px 0; }
+    .event-filter { top: 70px; }
+    .upcoming-section { padding: 52px 0; }
+    .events-grid { grid-template-columns: 1fr; }
+    .past-section { padding: 52px 0; }
+    .past-item { grid-template-columns: 1fr; gap: 8px; }
+    .past-item .past-type { text-align: left; }
+    .past-item .past-links { justify-content: flex-start; }
+    .event-meta-row { grid-template-columns: 1fr 1fr; }
+    .newsletter-band { padding: 52px 0; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-form input { border-right: 1px solid rgba(255,255,255,0.2); border-bottom: 0; }
+    .newsletter-form button { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-links">
+      <a href="#">Tecnológico de Monterrey</a>
+      <a href="#">VP of Research</a>
+      <a href="#">Directory</a>
+    </div>
+    <div class="topbar-meta">
+      <span>MTY · CDMX · GDL · QRO</span>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <div class="brand-mark"><span>A</span></div>
+      <div class="brand-text">
+        <span class="name">AIMS Institute</span>
+        <span class="sub">Tec de Monterrey</span>
+      </div>
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="investigacion.html">Research</a>
+      <a href="personas.html">People</a>
+      <a href="alianzas.html">Industry Partners</a>
+      <a href="events.html" class="active">Events</a>
+      <a href="publications.html">Publications</a>
+      <a href="alianzas.html" class="btn btn-primary nav-mobile-cta">Partner with us <span class="arrow">→</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a href="alianzas.html" class="btn btn-primary">Partner with us <span class="arrow">→</span></a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero" data-screen-label="01 Hero Events">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Events</span>
+    </div>
+    <h1>Where research<br>meets <span class="italic" style="color: var(--aims-accent);">industry.</span></h1>
+    <p>Conferences, executive roundtables, workshops and seminars connecting frontier research with industrial decision-makers. Open and by invitation.</p>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="event-filter">
+  <div class="container">
+    <div class="row">
+      <span class="eyebrow" style="margin-right: 12px;">FILTER</span>
+      <span class="tag solid">All events</span>
+      <span class="tag">Conference</span>
+      <span class="tag">Roundtable</span>
+      <span class="tag">Workshop</span>
+      <span class="tag">Seminar</span>
+      <span class="tag">Webinar</span>
+      <span style="margin-left: auto; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--aims-text-muted);">08 UPCOMING · 24 PAST</span>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED EVENT -->
+<section class="event-featured" data-screen-label="02 Featured">
+  <div class="container">
+    <div class="event-feat-grid">
+      <div class="event-feat-img" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=80');">
+        <div class="overlay"></div>
+        <div class="date-badge">
+          SEPT 18–19, 2026<br>MONTERREY · NL
+        </div>
+      </div>
+      <div class="event-feat-body">
+        <div class="type-pill"><span class="dot" style="width:6px;height:6px;background:var(--aims-accent);border-radius:50%;display:inline-block;"></span> FLAGSHIP CONFERENCE</div>
+        <h2>AIMS Summit 2026: AI-Driven Industrial Transformation</h2>
+        <p>The annual AIMS gathering brings together leading researchers, industry executives and policymakers to explore the frontier of AI in manufacturing and supply chains. Two days of keynotes, case studies and structured networking.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="#" class="btn btn-primary">Register now <span class="arrow">→</span></a>
+          <a href="#" class="btn btn-ghost">Program overview</a>
+        </div>
+        <div class="event-meta-row">
+          <div class="meta-item">
+            <div class="lbl">Format</div>
+            <div class="val">In-person + livestream</div>
+          </div>
+          <div class="meta-item">
+            <div class="lbl">Audience</div>
+            <div class="val">~300 attendees</div>
+          </div>
+          <div class="meta-item">
+            <div class="lbl">Languages</div>
+            <div class="val">English / Spanish</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UPCOMING EVENTS -->
+<section class="upcoming-section" data-screen-label="03 Upcoming">
+  <div class="container">
+    <div class="section-head" style="border-bottom-color: var(--aims-stone);">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Upcoming events</span>
+        <h2 class="h1">Join the<br><span class="italic" style="color: var(--aims-accent);">conversation.</span></h2>
+      </div>
+      <div class="right">
+        <p style="font-family: var(--font-serif); font-size: 18px; line-height: 1.5; color: var(--aims-text-muted); margin: 0;">
+          All AIMS events are designed to generate substantive dialogue between researchers and practitioners — not passive attendance.
+        </p>
+      </div>
+    </div>
+
+    <div class="events-grid">
+
+      <article class="event-card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1559223607-a43c990c692c?auto=format&fit=crop&w=700&q=80');">
+          <span class="type-tag">Executive Roundtable</span>
+        </div>
+        <div class="card-body">
+          <div class="card-date">July 10, 2026 · Monterrey</div>
+          <h3>Supply Chain Resilience in a Fragmented World</h3>
+          <p>Closed-door executive roundtable for Strategic and Founding members. Dr. Velázquez Martínez and the Supply Chain team will present fresh research findings and facilitate structured discussion.</p>
+          <div class="card-footer">
+            <span>Strategic &amp; Founding members</span>
+            <a href="#" class="register-link">Request access →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=700&q=80');">
+          <span class="type-tag">Workshop</span>
+        </div>
+        <div class="card-body">
+          <div class="card-date">July 24, 2026 · Online</div>
+          <h3>Hands-On: Digital Twins for Plant-Floor Optimization</h3>
+          <p>Technical workshop for engineers and data scientists. Build and deploy a simplified digital twin using AIMS open-source tools. Limited to 40 participants.</p>
+          <div class="card-footer">
+            <span>Open registration</span>
+            <a href="#" class="register-link">Register →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=700&q=80');">
+          <span class="type-tag">Seminar</span>
+        </div>
+        <div class="card-body">
+          <div class="card-date">Aug 7, 2026 · Monterrey</div>
+          <h3>AIMS Research Seminar: Scope 3 Traceability with Imperfect Data</h3>
+          <p>Research presentation by Dr. Mariana Torres with open Q&amp;A. Explores new methods for Scope 3 emissions tracking across fragmented Mexican supply chains.</p>
+          <div class="card-footer">
+            <span>Open to the public</span>
+            <a href="#" class="register-link">Register →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=700&q=80');">
+          <span class="type-tag">Roundtable</span>
+        </div>
+        <div class="card-body">
+          <div class="card-date">Aug 21, 2026 · CDMX</div>
+          <h3>Industrial AI Adoption: What's Actually Working</h3>
+          <p>A practitioner-led roundtable featuring three industrial partners sharing candid assessments of AI deployment in their operations — what succeeded, what didn't, and why.</p>
+          <div class="card-footer">
+            <span>All members</span>
+            <a href="#" class="register-link">Register →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=700&q=80');">
+          <span class="type-tag">Webinar</span>
+        </div>
+        <div class="card-body">
+          <div class="card-date">Sept 4, 2026 · Online</div>
+          <h3>LIFT Lab Mexico: 6-Month Field Deployment Update</h3>
+          <p>Ana Lucía Estrada presents the first cohort results of LIFT Lab Mexico — AI tools for SMEs, adoption rates and preliminary productivity data from the field.</p>
+          <div class="card-footer">
+            <span>Open registration</span>
+            <a href="#" class="register-link">Register →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=700&q=80');">
+          <span class="type-tag">Conference</span>
+        </div>
+        <div class="card-body">
+          <div class="card-date">Sept 18–19, 2026 · Monterrey</div>
+          <h3>AIMS Summit 2026 — Flagship Annual Conference</h3>
+          <p>Two days of keynotes, research presentations, industry case studies, structured networking and the AIMS Industrial Impact Award ceremony. Our largest public event of the year.</p>
+          <div class="card-footer">
+            <span>Open registration</span>
+            <a href="#" class="register-link">Register →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PAST EVENTS -->
+<section class="past-section" data-screen-label="04 Past">
+  <div class="container">
+    <div class="section-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Past events</span>
+        <h2 class="h1">Archive &amp;<br><span class="italic" style="color: var(--aims-accent);">recordings.</span></h2>
+      </div>
+      <div class="right">
+        <p style="font-family: var(--font-serif); font-size: 18px; line-height: 1.5; color: var(--aims-text-muted); margin: 0;">
+          Recordings, summary reports and slide decks from past AIMS events. Access varies by membership tier.
+        </p>
+      </div>
+    </div>
+
+    <div class="past-list">
+      <div class="past-item">
+        <div class="past-date">May 15, 2026</div>
+        <div>
+          <h4>Robotics &amp; Flexible Manufacturing: AIMS Lab Open Day</h4>
+          <div class="past-sub">Monterrey Campus · 80 attendees</div>
+        </div>
+        <div class="past-type">Lab Tour / Open Day</div>
+        <div class="past-links"><a href="#">Photos</a><a href="#">Summary</a></div>
+      </div>
+      <div class="past-item">
+        <div class="past-date">Apr 22, 2026</div>
+        <div>
+          <h4>Executive Roundtable: Nearshoring &amp; Supply Chain Readiness</h4>
+          <div class="past-sub">CDMX · By invitation · 28 executives</div>
+        </div>
+        <div class="past-type">Executive Roundtable</div>
+        <div class="past-links"><a href="#">Report</a></div>
+      </div>
+      <div class="past-item">
+        <div class="past-date">Mar 12, 2026</div>
+        <div>
+          <h4>Workshop: AI-Powered Demand Forecasting for Manufacturers</h4>
+          <div class="past-sub">Online · 120 registered · Recording available</div>
+        </div>
+        <div class="past-type">Workshop</div>
+        <div class="past-links"><a href="#">Recording</a><a href="#">Slides</a></div>
+      </div>
+      <div class="past-item">
+        <div class="past-date">Feb 28, 2026</div>
+        <div>
+          <h4>AIMS Research Seminar: Warehouse Automation — State of the Field</h4>
+          <div class="past-sub">Monterrey Campus · Open · 65 attendees</div>
+        </div>
+        <div class="past-type">Seminar</div>
+        <div class="past-links"><a href="#">Recording</a><a href="#">Slides</a></div>
+      </div>
+      <div class="past-item">
+        <div class="past-date">Jan 20, 2026</div>
+        <div>
+          <h4>AIMS Summit 2025 — Annual Conference</h4>
+          <div class="past-sub">Monterrey · 280 attendees · Full recording available</div>
+        </div>
+        <div class="past-type">Annual Conference</div>
+        <div class="past-links"><a href="#">Recording</a><a href="#">Report</a><a href="#">Slides</a></div>
+      </div>
+      <div class="past-item">
+        <div class="past-date">Nov 14, 2025</div>
+        <div>
+          <h4>Webinar: LIFT Lab — First Results from Colombia Deployment</h4>
+          <div class="past-sub">Online · 340 registered</div>
+        </div>
+        <div class="past-type">Webinar</div>
+        <div class="past-links"><a href="#">Recording</a></div>
+      </div>
+      <div class="past-item">
+        <div class="past-date">Oct 9, 2025</div>
+        <div>
+          <h4>Industry Roundtable: Scope 3 Measurement — Where are We?</h4>
+          <div class="past-sub">Guadalajara · Strategic &amp; Founding members only</div>
+        </div>
+        <div class="past-type">Roundtable</div>
+        <div class="past-links"><a href="#">Members report</a></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px; text-align: center;">
+      <a href="#" class="link-arrow">View full archive →</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-band" data-screen-label="05 Newsletter">
+  <div class="container">
+    <div class="newsletter-grid">
+      <div>
+        <span class="eyebrow" style="color: #8aa0bd;"><span class="dot"></span>Stay informed</span>
+        <h2 style="margin-top: 14px;">Never miss an AIMS event<br>or research insight.</h2>
+        <p>Monthly newsletter with upcoming events, new publications and industry case studies. No noise — just relevant signal.</p>
+      </div>
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8aa0bd; margin-bottom: 14px;">SUBSCRIBE TO NEWSLETTER</div>
+        <div class="newsletter-form">
+          <input type="email" placeholder="your@email.com" />
+          <button type="submit">Subscribe →</button>
+        </div>
+        <p style="margin: 14px 0 0; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; color: #4a5f7a;">
+          No spam. Unsubscribe at any time. ~1,800 subscribers.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 24px;">
+          <div class="brand-mark"><span>A</span></div>
+          <div class="brand-text">
+            <span class="name">AIMS Institute</span>
+            <span class="sub">Tec de Monterrey</span>
+          </div>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; color: #8aa0bd; max-width: 320px; margin: 0;">
+          AI Institute for Manufacturing and Supply Chains.<br>
+          Campuses in Monterrey · CDMX · Guadalajara · Querétaro.
+        </p>
+      </div>
+      <div><h4>Research</h4><ul><li><a href="#">Smart Manufacturing</a></li><li><a href="#">Industrial AI</a></li><li><a href="#">Supply Chain &amp; Logistics</a></li><li><a href="#">LIFT Lab</a></li></ul></div>
+      <div><h4>Institute</h4><ul><li><a href="personas.html">Faculty</a></li><li><a href="alianzas.html">Partnerships</a></li><li><a href="events.html">Events</a></li><li><a href="publications.html">Publications</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="#">Newsletter</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">YouTube</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4>Tec de Monterrey</h4><ul><li><a href="#">VP of Research</a></li><li><a href="#">tec.mx/research</a></li><li><a href="#">Doctoral Programs</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AIMS · TECNOLÓGICO DE MONTERREY</span>
+      <span>JOSUEVM@TEC.MX  ·  Av. Eugenio Garza Sada 2501, Monterrey, NL</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const nav = document.getElementById('mainNav');
+if (toggle && nav) {
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    toggle.classList.toggle('open');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+  });
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+</script>
+</body>
+</html>

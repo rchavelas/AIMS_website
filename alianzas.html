@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Industry Partnerships · AIMS Institute · Tec de Monterrey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="partials.css">
+<style>
+  .pillars-row { background: var(--aims-paper); padding: 100px 0; border-bottom: 1px solid var(--aims-line); }
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 56px;
+    border-top: 1px solid var(--aims-ink);
+  }
+  .pillar-cell {
+    border-right: 1px solid var(--aims-line);
+    padding: 32px 28px 36px;
+    background: #fff;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+  }
+  .pillar-cell:last-child { border-right: 0; }
+  .pillar-cell .num { font-family: var(--font-serif); font-size: 56px; line-height: 1; letter-spacing: -0.03em; color: var(--aims-deep); }
+  .pillar-cell .num .accent { color: var(--aims-accent); }
+  .pillar-cell .label { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--aims-text-muted); margin: 8px 0 18px; }
+  .pillar-cell h3 { font-family: var(--font-serif); font-size: 22px; line-height: 1.2; letter-spacing: -0.01em; color: var(--aims-ink); margin: 0 0 12px; }
+  .pillar-cell p { font-size: 14px; color: var(--aims-text-muted); line-height: 1.55; margin: 0; }
+
+  .tiers-section { padding: 100px 0; background: var(--aims-bone); }
+  .compare { margin-top: 56px; background: #fff; border: 1px solid var(--aims-line); overflow-x: auto; }
+  .compare-row { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; border-top: 1px solid var(--aims-line); min-width: 600px; }
+  .compare-row:first-child { border-top: 0; }
+  .compare-row > div { padding: 18px 24px; border-right: 1px solid var(--aims-line); font-size: 14px; color: var(--aims-text); display: flex; align-items: center; }
+  .compare-row > div:last-child { border-right: 0; }
+  .compare-row > div:first-child { font-family: var(--font-serif); font-size: 16px; color: var(--aims-ink); }
+  .compare-row.head > div { background: var(--aims-ink); color: #fff; padding: 28px 24px; border-right: 1px solid rgba(255,255,255,0.12); font-family: var(--font-sans); flex-direction: column; align-items: flex-start; gap: 6px; }
+  .compare-row.head > div:first-child { background: var(--aims-paper); color: var(--aims-ink); }
+  .compare-row.head .level { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; color: #8aa0bd; }
+  .compare-row.head .name { font-family: var(--font-serif); font-size: 28px; color: #fff; letter-spacing: -0.01em; }
+  .compare-row.head .price { font-family: var(--font-mono); font-size: 11px; color: var(--aims-accent); letter-spacing: 0.08em; text-transform: uppercase; }
+  .compare-row.head .featured-tag { background: var(--aims-accent); padding: 8px 24px; color: #fff; }
+  .check-yes { font-family: var(--font-serif); font-size: 22px; color: var(--aims-deep); line-height: 1; }
+  .check-no { color: var(--aims-line); font-size: 16px; }
+  .check-text { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--aims-accent); }
+  .compare-cta { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; border-top: 1px solid var(--aims-ink); min-width: 600px; }
+  .compare-cta > div { padding: 28px 24px; border-right: 1px solid var(--aims-line); }
+  .compare-cta > div:last-child { border-right: 0; }
+  .compare-cta .btn { width: 100%; justify-content: space-between; }
+
+  .modes { padding: 100px 0; background: var(--aims-paper); }
+  .modes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+  .mode-card { background: #fff; border: 1px solid var(--aims-line); padding: 36px 36px 38px; display: grid; grid-template-columns: 60px 1fr; gap: 24px; }
+  .mode-card .num-large { font-family: var(--font-serif); font-size: 60px; line-height: 0.9; color: var(--aims-line); letter-spacing: -0.03em; }
+  .mode-card h3 { font-family: var(--font-serif); font-size: 24px; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 12px; color: var(--aims-ink); }
+  .mode-card p { font-size: 14.5px; color: var(--aims-text-muted); line-height: 1.55; margin: 0 0 18px; }
+  .mode-card .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .process { background: var(--aims-ink); color: #fff; padding: 110px 0; }
+  .process h2 { color: #fff; }
+  .process .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 64px; border-top: 1px solid rgba(255,255,255,0.18); }
+  .step-cell { padding: 32px 28px 36px; border-right: 1px solid rgba(255,255,255,0.12); position: relative; }
+  .step-cell:last-child { border-right: 0; }
+  .step-cell::before { content: ""; position: absolute; top: -1px; left: 0; width: 40px; height: 1px; background: var(--aims-accent); }
+  .step-cell .num { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; color: var(--aims-accent); }
+  .step-cell h3 { font-family: var(--font-serif); font-size: 24px; line-height: 1.15; letter-spacing: -0.01em; color: #fff; margin: 18px 0 14px; }
+  .step-cell p { font-size: 14px; color: #b6c2d2; line-height: 1.5; margin: 0; }
+  .step-cell .duration { margin-top: 18px; padding-top: 14px; border-top: 1px dashed rgba(255,255,255,0.18); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: #8aa0bd; }
+
+  .partners-showcase { padding: 100px 0; background: var(--aims-bone); }
+  .partner-logos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin-top: 48px; border: 1px solid var(--aims-line); background: var(--aims-paper); }
+  .partner-cell { aspect-ratio: 16/9; border-right: 1px solid var(--aims-line); border-bottom: 1px solid var(--aims-line); display: grid; place-items: center; background: #fff; }
+  .partner-cell:nth-child(6n) { border-right: 0; }
+  .partner-cell:nth-last-child(-n+6) { border-bottom: 0; }
+  .partner-bar { height: 28px; width: 60%; border-radius: 2px; }
+
+  .case-study { padding: 100px 0; background: var(--aims-paper); }
+  .case-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+  .case-visual { aspect-ratio: 4/3; border: 1px solid var(--aims-line); position: relative; overflow: hidden; background-size: cover; background-position: center; }
+  .case-visual-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom right, rgba(10,22,40,0.15), rgba(10,22,40,0.05)); }
+
+  .contact-section { background: var(--aims-accent); color: #fff; padding: 100px 0; position: relative; overflow: hidden; }
+  .contact-section::before { content: "PARTNER · WITH · AIMS"; position: absolute; bottom: -60px; right: -20px; font-family: var(--font-display); font-weight: 700; font-size: 200px; color: rgba(255,255,255,0.06); letter-spacing: -0.03em; pointer-events: none; line-height: 1; }
+  .contact-section .container { position: relative; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .contact-section h2 { color: #fff; font-family: var(--font-serif); font-size: clamp(40px, 4.6vw, 64px); line-height: 1.0; letter-spacing: -0.025em; margin: 0 0 24px; font-weight: 400; }
+  .contact-section .lead { font-family: var(--font-serif); color: rgba(255,255,255,0.92); font-size: 19px; line-height: 1.5; margin-bottom: 36px; max-width: 480px; }
+  .contact-meta { display: grid; gap: 16px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.3); }
+  .contact-meta .row { display: grid; grid-template-columns: 140px 1fr; gap: 24px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .contact-meta .row .lbl { color: rgba(255,255,255,0.7); }
+  .contact-meta .row .val { color: #fff; }
+  .form-card { background: #fff; color: var(--aims-text); padding: 40px 40px 44px; }
+  .form-card .form-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--aims-accent); margin-bottom: 14px; }
+  .form-card h3 { font-family: var(--font-serif); font-size: 28px; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 28px; color: var(--aims-ink); }
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aims-text-muted); margin-bottom: 8px; }
+  .field input, .field select, .field textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--aims-line); border-radius: 0; font-family: var(--font-sans); font-size: 14.5px; color: var(--aims-text); background: var(--aims-paper); outline: none; transition: border-color 0.2s ease; }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--aims-deep); background: #fff; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .interest-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { padding: 8px 14px; border: 1px solid var(--aims-line); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--aims-text-muted); cursor: pointer; background: #fff; transition: all 0.15s ease; }
+  .chip:hover, .chip.active { border-color: var(--aims-accent); color: var(--aims-accent); background: var(--aims-accent-soft); }
+
+  /* Mobile */
+  @media (max-width: 1024px) {
+    .pillars-row { padding: 64px 0; }
+    .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+    .pillar-cell:nth-child(2) { border-right: 0; }
+    .modes { padding: 64px 0; }
+    .modes-grid { grid-template-columns: 1fr; }
+    .process { padding: 72px 0; }
+    .process .steps { grid-template-columns: repeat(2, 1fr); }
+    .step-cell:nth-child(2) { border-right: 0; }
+    .step-cell:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.18); }
+    .partners-showcase { padding: 64px 0; }
+    .partner-logos { grid-template-columns: repeat(4, 1fr); }
+    .partner-cell:nth-child(4n) { border-right: 0; }
+    .case-study { padding: 64px 0; }
+    .case-grid { grid-template-columns: 1fr; gap: 36px; }
+    .contact-section { padding: 72px 0; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  @media (max-width: 768px) {
+    .tiers-section { padding: 60px 0; }
+    .pillar-grid { grid-template-columns: 1fr; border-top: none; }
+    .pillar-cell { border-right: 0; border-top: 1px solid var(--aims-line); min-height: auto; }
+    .process .steps { grid-template-columns: 1fr; }
+    .step-cell { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .step-cell:last-child { border-bottom: 0; }
+    .partner-logos { grid-template-columns: repeat(3, 1fr); }
+    .partner-cell:nth-child(3n) { border-right: 0; }
+    .field-row { grid-template-columns: 1fr; }
+    .contact-meta .row { grid-template-columns: 100px 1fr; }
+    .mode-card { grid-template-columns: 1fr; gap: 12px; }
+    .mode-card .num-large { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-links">
+      <a href="#">Tecnológico de Monterrey</a>
+      <a href="#">VP of Research</a>
+      <a href="#">Directory</a>
+    </div>
+    <div class="topbar-meta">
+      <span>MTY · CDMX · GDL · QRO</span>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <div class="brand-mark"><span>A</span></div>
+      <div class="brand-text">
+        <span class="name">AIMS Institute</span>
+        <span class="sub">Tec de Monterrey</span>
+      </div>
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="investigacion.html">Research</a>
+      <a href="personas.html">People</a>
+      <a href="alianzas.html" class="active">Industry Partners</a>
+      <a href="events.html">Events</a>
+      <a href="publications.html">Publications</a>
+      <a href="#contact" class="btn btn-primary nav-mobile-cta">Contact us <span class="arrow">→</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Contact us <span class="arrow">→</span></a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero" data-screen-label="01 Hero Partnerships">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Industry Partnerships</span>
+    </div>
+    <h1>Build with AIMS<br>the next chapter<br>of your <span class="italic" style="color: var(--aims-accent);">industry.</span></h1>
+    <p>A multi-level membership model designed for long-term, high-impact partnerships based on knowledge exchange and co-creation with frontier researchers.</p>
+    <div style="display: flex; gap: 14px; margin-top: 40px; flex-wrap: wrap;">
+      <a href="#tiers" class="btn btn-primary">View membership tiers <span class="arrow">→</span></a>
+      <a href="#contact" class="btn btn-ghost-light">Contact us directly</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY AIMS -->
+<section class="pillars-row" data-screen-label="02 Why AIMS">
+  <div class="container">
+    <div class="section-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Why partner with AIMS</span>
+        <h2 class="h1">You have access to AI, materials and operations.<br>What's missing is the <span class="italic" style="color: var(--aims-accent);">integration.</span></h2>
+      </div>
+      <div class="right">
+        <p style="font-family: var(--font-serif); font-size: 18px; line-height: 1.5; color: var(--aims-text-muted); margin: 0;">
+          Industry has access to remarkable advances — but they live in silos. AIMS is built specifically to close that gap.
+        </p>
+      </div>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar-cell">
+        <div class="num">+40</div>
+        <div class="label">Researchers &amp; Postdocs</div>
+        <h3>Elite multidisciplinary capacity</h3>
+        <p>Principal researchers and postdoctoral fellows across four campuses with proven industry experience.</p>
+      </div>
+      <div class="pillar-cell">
+        <div class="num">+20</div>
+        <div class="label">Laboratories · 1,450 m²</div>
+        <h3>Physical infrastructure, not virtual</h3>
+        <p>Manufacturing, robotics, materials and computing labs — available for co-research projects.</p>
+      </div>
+      <div class="pillar-cell">
+        <div class="num">04</div>
+        <div class="label">Integrated areas by design</div>
+        <h3>Cross-cutting capabilities, not isolated</h3>
+        <p>Manufacturing, AI, supply chain and materials deliberately intersect — because your challenge does too.</p>
+      </div>
+      <div class="pillar-cell">
+        <div class="num"><span class="accent">★</span></div>
+        <div class="label">Deployment · Not just papers</div>
+        <h3>Pilots in plant, not demos</h3>
+        <p>Deployment is part of the work. We validate under real conditions, with real data, alongside you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS COMPARE -->
+<section class="tiers-section" id="tiers" data-screen-label="03 Tiers">
+  <div class="container">
+    <div class="section-head" style="border-bottom-color: var(--aims-stone);">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Membership tiers</span>
+        <h2 class="h1">Three tiers. One shared<br>commitment to <span class="italic" style="color: var(--aims-accent);">deployment.</span></h2>
+      </div>
+      <div class="right">
+        <p style="font-family: var(--font-serif); font-size: 18px; line-height: 1.5; color: var(--aims-text-muted); margin: 0;">
+          Designed for companies seeking more than a research vendor: a strategic technical co-pilot.
+        </p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="compare-row head">
+        <div>
+          <span class="eyebrow" style="margin-bottom: 4px;">CAPABILITY</span>
+          <span style="font-family: var(--font-serif); font-size: 22px; color: var(--aims-ink);">Comparison</span>
+        </div>
+        <div>
+          <span class="level">TIER 03</span>
+          <span class="name">Affiliate</span>
+          <span class="price">CURATED ACCESS · ANNUAL</span>
+        </div>
+        <div style="border-left: 1px solid var(--aims-accent); position: relative;">
+          <span class="featured-tag" style="position: absolute; top: -1px; right: 0;">★ MOST POPULAR</span>
+          <span class="level">TIER 02</span>
+          <span class="name">Strategic</span>
+          <span class="price">CO-CREATION · MULTI-YEAR</span>
+        </div>
+        <div>
+          <span class="level">TIER 01</span>
+          <span class="name">Founding</span>
+          <span class="price">BY INVITATION</span>
+        </div>
+      </div>
+      <div class="compare-row"><div>Access to publications &amp; insights</div><div><span class="check-yes">●</span></div><div><span class="check-yes">●</span></div><div><span class="check-yes">●</span></div></div>
+      <div class="compare-row"><div>Monthly applied research newsletter</div><div><span class="check-yes">●</span></div><div><span class="check-yes">●</span></div><div><span class="check-yes">●</span></div></div>
+      <div class="compare-row"><div>Conferences, roundtables &amp; workshops</div><div><span class="check-text">3 / year</span></div><div><span class="check-text">Unlimited</span></div><div><span class="check-text">+ Private</span></div></div>
+      <div class="compare-row"><div>Executive education</div><div><span class="check-no">—</span></div><div><span class="check-text">Open courses</span></div><div><span class="check-text">Custom</span></div></div>
+      <div class="compare-row"><div>Advisory hours with lead researchers</div><div><span class="check-no">—</span></div><div><span class="check-text">40 hrs / year</span></div><div><span class="check-text">Dedicated program</span></div></div>
+      <div class="compare-row"><div>Pre-publication research access</div><div><span class="check-no">—</span></div><div><span class="check-yes">●</span></div><div><span class="check-yes">●</span></div></div>
+      <div class="compare-row"><div>Co-funded research projects</div><div><span class="check-no">—</span></div><div><span class="check-text">1–2 active</span></div><div><span class="check-text">Dedicated portfolio</span></div></div>
+      <div class="compare-row"><div>Pilot deployment with AIMS teams</div><div><span class="check-no">—</span></div><div><span class="check-text">Per project</span></div><div><span class="check-yes">●</span></div></div>
+      <div class="compare-row"><div>Seat on industrial advisory board</div><div><span class="check-no">—</span></div><div><span class="check-no">—</span></div><div><span class="check-yes">●</span></div></div>
+      <div class="compare-row"><div>Influence over research agenda</div><div><span class="check-no">—</span></div><div><span class="check-no">—</span></div><div><span class="check-yes">●</span></div></div>
+      <div class="compare-row"><div>Institutional branding &amp; co-engagement</div><div><span class="check-no">—</span></div><div><span class="check-text">Selective</span></div><div><span class="check-yes">●</span></div></div>
+      <div class="compare-cta">
+        <div></div>
+        <div><a href="#contact" class="btn btn-ghost">Learn about Affiliate <span class="arrow">→</span></a></div>
+        <div><a href="#contact" class="btn btn-primary">Learn about Strategic <span class="arrow">→</span></a></div>
+        <div><a href="#contact" class="btn btn-dark">Request invitation <span class="arrow">→</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT MODES -->
+<section class="modes" data-screen-label="04 Formats">
+  <div class="container">
+    <div class="section-head">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Outreach model</span>
+        <h2 class="h1">Four engagement pillars.<br>A <span class="italic" style="color: var(--aims-accent);">portfolio</span> of value.</h2>
+      </div>
+      <div class="right">
+        <p style="font-family: var(--font-serif); font-size: 18px; line-height: 1.5; color: var(--aims-text-muted); margin: 0;">
+          Membership is just the contract. The real value lives in four complementary collaboration formats.
+        </p>
+      </div>
+    </div>
+    <div class="modes-grid">
+      <article class="mode-card">
+        <div class="num-large">01</div>
+        <div>
+          <h3>Membership Program</h3>
+          <p>Three tiers — Founding, Strategic, Affiliate — with structured access to research, advisory and strategic influence.</p>
+          <div class="tag-row"><span class="tag">Funding</span><span class="tag">Research access</span><span class="tag">Advisory</span></div>
+        </div>
+      </article>
+      <article class="mode-card">
+        <div class="num-large">02</div>
+        <div>
+          <h3>Industrial Engagement</h3>
+          <p>Conferences, executive roundtables, high-level education and applied workshops on real problems.</p>
+          <div class="tag-row"><span class="tag">Conferences</span><span class="tag">Roundtables</span><span class="tag">Executive Ed.</span><span class="tag">Workshops</span></div>
+        </div>
+      </article>
+      <article class="mode-card">
+        <div class="num-large">03</div>
+        <div>
+          <h3>Knowledge Dissemination</h3>
+          <p>Monthly newsletter, research insights and industrial applications — always with a deployment framework.</p>
+          <div class="tag-row"><span class="tag">Newsletter</span><span class="tag">Insights</span><span class="tag">Applied cases</span></div>
+        </div>
+      </article>
+      <article class="mode-card">
+        <div class="num-large">04</div>
+        <div>
+          <h3>Digital &amp; Media Presence</h3>
+          <p>Thought leadership, active presence on key networks and participation in industry media.</p>
+          <div class="tag-row"><span class="tag">Thought leadership</span><span class="tag">Networks</span><span class="tag">Media</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" data-screen-label="05 Process">
+  <div class="container">
+    <div class="section-head" style="border-bottom-color: rgba(255,255,255,0.18);">
+      <div class="left">
+        <span class="eyebrow" style="color: #8aa0bd;"><span class="dot"></span>How we work</span>
+        <h2 class="h1" style="color: #fff;">From first conversation<br>to pilot: <span class="italic" style="color: var(--aims-accent);">90 days.</span></h2>
+      </div>
+      <div class="right">
+        <p style="font-family: var(--font-serif); font-size: 18px; line-height: 1.5; color: #b6c2d2; margin: 0;">
+          A structured process to go from an ill-defined industrial challenge to a pilot with clear metrics and an assigned team.
+        </p>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step-cell">
+        <div class="num">PHASE 01</div>
+        <h3>Discovery</h3>
+        <p>Strategic conversation with the director and area leads to frame the challenge in terms of AIMS capabilities.</p>
+        <div class="duration">DURATION · 2 WEEKS</div>
+      </div>
+      <div class="step-cell">
+        <div class="num">PHASE 02</div>
+        <h3>Scoping</h3>
+        <p>Joint definition of technical hypothesis, impact metric, pilot scope and assigned research team.</p>
+        <div class="duration">DURATION · 4 WEEKS</div>
+      </div>
+      <div class="step-cell">
+        <div class="num">PHASE 03</div>
+        <h3>Pilot</h3>
+        <p>Execution in plant or field with a mixed AIMS + industrial partner team. Real data, iterative cycle, live metrics.</p>
+        <div class="duration">DURATION · 12+ WEEKS</div>
+      </div>
+      <div class="step-cell">
+        <div class="num">PHASE 04</div>
+        <h3>Scale</h3>
+        <p>Transfer, scaling to multiple sites, transition to a multi-year program and joint publications.</p>
+        <div class="duration">MULTI-YEAR CYCLE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="case-study" data-screen-label="06 Case study">
+  <div class="container">
+    <div class="case-grid">
+      <div class="case-visual" style="background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80');">
+        <div class="case-visual-overlay"></div>
+      </div>
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Featured case · 2026</span>
+        <h2 class="h1" style="margin-top: 14px;">Plant digital twin<br>for Grupo Carso.</h2>
+        <p style="font-family: var(--font-serif); font-size: 18px; line-height: 1.55; color: var(--aims-text-muted); margin: 24px 0 32px; max-width: 520px;">
+          18% reduction in energy consumption in a six-month pilot. Built by the AIMS Industrial AI team with real plant data and co-supervision from operations.
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; padding-top: 28px; border-top: 1px solid var(--aims-line);">
+          <div>
+            <div style="font-family: var(--font-serif); font-size: 38px; color: var(--aims-deep); letter-spacing: -0.02em; line-height: 1;">−18<span style="color: var(--aims-accent); font-size: 0.55em;">%</span></div>
+            <div style="font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--aims-text-muted); margin-top: 8px;">Energy consumption</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-serif); font-size: 38px; color: var(--aims-deep); letter-spacing: -0.02em; line-height: 1;">6<span style="color: var(--aims-accent); font-size: 0.55em;">mo</span></div>
+            <div style="font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--aims-text-muted); margin-top: 8px;">End-to-end pilot</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-serif); font-size: 38px; color: var(--aims-deep); letter-spacing: -0.02em; line-height: 1;">3<span style="color: var(--aims-accent); font-size: 0.55em;">plants</span></div>
+            <div style="font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--aims-text-muted); margin-top: 8px;">Scaling now</div>
+          </div>
+        </div>
+        <a href="#" class="link-arrow" style="margin-top: 32px;">Read the full case →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners-showcase" data-screen-label="07 Partners">
+  <div class="container">
+    <div class="section-head" style="border-bottom-color: var(--aims-stone);">
+      <div class="left">
+        <span class="eyebrow"><span class="dot"></span>Industrial &amp; academic partners</span>
+        <h2 class="h1">A network being built.<br><span class="italic" style="color: var(--aims-accent);">Your organization</span> too.</h2>
+      </div>
+      <div class="right">
+        <p style="font-family: var(--font-serif); font-size: 18px; line-height: 1.5; color: var(--aims-text-muted); margin: 0;">
+          AIMS works with industrial leaders in Mexico and Latin America, and maintains strategic collaboration with MIT CTL.
+        </p>
+      </div>
+    </div>
+    <div class="partner-logos">
+      <div class="partner-cell"><div class="partner-bar" style="background: repeating-linear-gradient(90deg, var(--aims-stone) 0 12px, transparent 12px 20px);"></div></div>
+      <div class="partner-cell"><div class="partner-bar" style="background: repeating-linear-gradient(90deg, var(--aims-stone) 0 8px, transparent 8px 14px);"></div></div>
+      <div class="partner-cell"><div class="partner-bar" style="background: repeating-linear-gradient(90deg, var(--aims-stone) 0 14px, transparent 14px 22px);"></div></div>
+      <div class="partner-cell"><div class="partner-bar" style="background: repeating-linear-gradient(90deg, var(--aims-stone) 0 6px, transparent 6px 12px);"></div></div>
+      <div class="partner-cell"><div class="partner-bar" style="background: repeating-linear-gradient(90deg, var(--aims-stone) 0 10px, transparent 10px 18px);"></div></div>
+      <div class="partner-cell"><div class="partner-bar" style="background: repeating-linear-gradient(90deg, var(--aims-stone) 0 7px, transparent 7px 15px);"></div></div>
+      <div class="partner-cell"><div class="partner-bar" style="background: repeating-linear-gradient(90deg, var(--aims-stone) 0 11px, transparent 11px 19px);"></div></div>
+      <div class="partner-cell"><div class="partner-bar" style="background: repeating-linear-gradient(90deg, var(--aims-stone) 0 9px, transparent 9px 17px);"></div></div>
+      <div class="partner-cell"><div class="partner-bar" style="background: repeating-linear-gradient(90deg, var(--aims-stone) 0 13px, transparent 13px 21px);"></div></div>
+      <div class="partner-cell"><div class="partner-bar" style="background: repeating-linear-gradient(90deg, var(--aims-stone) 0 8px, transparent 8px 16px);"></div></div>
+      <div class="partner-cell"><div class="partner-bar" style="background: repeating-linear-gradient(90deg, var(--aims-stone) 0 12px, transparent 12px 18px);"></div></div>
+      <div class="partner-cell"><div class="partner-bar" style="background: repeating-linear-gradient(90deg, var(--aims-stone) 0 5px, transparent 5px 11px);"></div></div>
+    </div>
+    <div style="margin-top: 24px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--aims-text-muted); text-align: center;">
+      REPRESENTATIVE LOGOS · TO BE REPLACED WITH ACTUAL PARTNER IDENTITIES
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="contact-section" id="contact" data-screen-label="08 Contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="eyebrow" style="color: rgba(255,255,255,0.85);"><span class="dot" style="background: #fff;"></span>Let's talk</span>
+        <h2 style="margin-top: 14px;">Start<br>a conversation.</h2>
+        <p class="lead">
+          Tell us about your industrial challenge. The AIMS director or an area lead will follow up within 5 business days.
+        </p>
+        <div class="contact-meta">
+          <div class="row"><span class="lbl">Director</span><span class="val">Dr. Josué C. Velázquez Martínez</span></div>
+          <div class="row"><span class="lbl">Direct email</span><span class="val">josuevm@tec.mx</span></div>
+          <div class="row"><span class="lbl">Main campus</span><span class="val">Monterrey · NL</span></div>
+          <div class="row"><span class="lbl">Presence</span><span class="val">MTY · CDMX · GDL · QRO</span></div>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="form-eyebrow">Contact form</div>
+        <h3>Tell us about your organization and challenge.</h3>
+        <div class="field-row">
+          <div class="field"><label>Full name</label><input type="text" placeholder="Your name" /></div>
+          <div class="field"><label>Title</label><input type="text" placeholder="VP, CTO, Director, etc." /></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Company</label><input type="text" placeholder="Organization name" /></div>
+          <div class="field"><label>Corporate email</label><input type="email" placeholder="you@company.com" /></div>
+        </div>
+        <div class="field">
+          <label>Interest level</label>
+          <select>
+            <option>— Select a tier —</option>
+            <option>Affiliate · Curated access</option>
+            <option>Strategic · Co-creation</option>
+            <option>Founding · By invitation</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Areas of interest</label>
+          <div class="interest-chips">
+            <span class="chip active">Smart Manufacturing</span>
+            <span class="chip">Industrial AI</span>
+            <span class="chip active">Supply Chain</span>
+            <span class="chip">LIFT Lab</span>
+          </div>
+        </div>
+        <div class="field"><label>Tell us about your challenge</label><textarea rows="4" placeholder="Briefly describe the problem or opportunity you're exploring..."></textarea></div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 8px;">Send message <span class="arrow">→</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 24px;">
+          <div class="brand-mark"><span>A</span></div>
+          <div class="brand-text">
+            <span class="name">AIMS Institute</span>
+            <span class="sub">Tec de Monterrey</span>
+          </div>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; color: #8aa0bd; max-width: 320px; margin: 0;">
+          AI Institute for Manufacturing and Supply Chains.<br>
+          Campuses in Monterrey · CDMX · Guadalajara · Querétaro.
+        </p>
+      </div>
+      <div><h4>Research</h4><ul><li><a href="#">Smart Manufacturing</a></li><li><a href="#">Industrial AI</a></li><li><a href="#">Supply Chain &amp; Logistics</a></li><li><a href="#">LIFT Lab</a></li></ul></div>
+      <div><h4>Institute</h4><ul><li><a href="personas.html">Faculty</a></li><li><a href="alianzas.html">Partnerships</a></li><li><a href="events.html">Events</a></li><li><a href="publications.html">Publications</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="#">Newsletter</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">YouTube</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4>Tec de Monterrey</h4><ul><li><a href="#">VP of Research</a></li><li><a href="#">tec.mx/research</a></li><li><a href="#">Doctoral Programs</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AIMS · TECNOLÓGICO DE MONTERREY</span>
+      <span>JOSUEVM@TEC.MX  ·  Av. Eugenio Garza Sada 2501, Monterrey, NL</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const nav = document.getElementById('mainNav');
+if (toggle && nav) {
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    toggle.classList.toggle('open');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+  });
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+</script>
+</body>
+</html>
