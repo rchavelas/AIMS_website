@@ -411,7 +411,7 @@
 .insights { padding: 100px 0; background: var(--aims-paper); }
 .insight-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 32px;
 }
 .insight {
@@ -428,7 +428,30 @@
   border-bottom: 1px solid var(--aims-line);
   position: relative;
 }
-.insight.feat .img { aspect-ratio: 16/11; }
+.insight.feat {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 0;
+}
+.insight.feat .img {
+  aspect-ratio: unset;
+  min-height: unset;
+  border-bottom: 0;
+  border-right: 1px solid var(--aims-line);
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+.insight.feat .img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+.insight.feat .body {
+  padding: 48px 52px;
+  justify-content: center;
+}
 .insight .body { padding: 24px 26px 28px; flex: 1; display: flex; flex-direction: column; }
 .insight .meta {
   font-family: var(--font-mono);
@@ -760,8 +783,10 @@
   .tier:last-child { border-right: 1px solid rgba(255,255,255,0.12); }
 
   /* Insights */
-  .insight-grid { grid-template-columns: 1fr 1fr; }
-  .insight.feat { grid-column: span 2; }
+  .insight-grid { grid-template-columns: 1fr; }
+  .insight.feat { grid-template-columns: 1fr; }
+  .insight.feat .img { border-right: 0; border-bottom: 1px solid var(--aims-line); }
+  .insight.feat .body { padding: 32px 36px; }
 
   /* People */
   .people-row { grid-template-columns: repeat(2, 1fr); }
@@ -791,11 +816,15 @@
   .hero-stats-bar .stat:nth-child(3) { border-left: 1px solid rgba(255,255,255,0.12); padding-left: 16px; }
   .hero-stats-bar .stat .num { font-size: 30px; }
   .hero-strip {
-    gap: 16px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
     padding: 16px 0;
     margin-top: 0;
+    overflow: visible;
+    white-space: normal;
   }
+  .hero-strip .item { white-space: normal; }
 
   /* Mission */
   .mission { padding: 52px 0; }
@@ -819,7 +848,9 @@
   /* Insights */
   .insights { padding: 60px 0; }
   .insight-grid { grid-template-columns: 1fr; }
-  .insight.feat { grid-column: 1; }
+  .insight.feat { grid-template-columns: 1fr; }
+  .insight.feat .img { border-right: 0; border-bottom: 1px solid var(--aims-line); }
+  .insight.feat .body { padding: 28px 24px; }
 
   /* People */
   .people-band { padding: 60px 0; }
