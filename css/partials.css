@@ -674,6 +674,86 @@
   object-fit: cover;
   object-position: center;
 }
+
+/* ── Hero Slideshow ────────────────────────────────────────── */
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  will-change: opacity, transform;
+}
+
+/* Slide images */
+.slide-1 {
+  background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80');
+  animation: aims-slide-1 40s ease-in-out infinite;
+  transform-origin: center center;
+}
+.slide-2 {
+  background-image: url('https://images.unsplash.com/photo-1647427060118-4911c9821b82?auto=format&fit=crop&w=1920&q=80');
+  animation: aims-slide-2 40s ease-in-out infinite;
+  transform-origin: 58% center;
+}
+.slide-3 {
+  background-image: url('https://images.unsplash.com/photo-1777026321659-64941fb943dd?auto=format&fit=crop&w=1920&q=80');
+  animation: aims-slide-3 40s ease-in-out infinite;
+  transform-origin: 42% center;
+}
+.slide-4 {
+  background-image: url('https://images.unsplash.com/photo-1752614672115-adcf3e2596af?auto=format&fit=crop&w=1920&q=80');
+  animation: aims-slide-4 40s ease-in-out infinite;
+  transform-origin: 50% 40%;
+}
+
+/*
+  Timing map (40 s total, 2 s crossfade overlap, 8 s exclusive per slide):
+  Slide 1 (chip)     : visible  0 – 8 s,  fade-out  8 – 10 s
+  Slide 2 (robot)    : fade-in  8 – 10 s, visible 10 – 18 s, fade-out 18 – 20 s
+  Slide 3 (truck)    : fade-in 18 – 20 s, visible 20 – 28 s, fade-out 28 – 30 s
+  Slide 4 (3D print) : fade-in 28 – 30 s, visible 30 – 38 s, fade-out 38 – 40 s
+  Loop               : fade-in slide 1 again at 38 – 40 s
+*/
+
+@keyframes aims-slide-1 {
+  0%     { opacity: 1;  transform: scale(1.00); }   /*  0 s – visible, zoom starts  */
+  20%    { opacity: 1;  transform: scale(1.10); }   /*  8 s – still visible         */
+  25%    { opacity: 0;  transform: scale(1.11); }   /* 10 s – faded out             */
+  95%    { opacity: 0;  transform: scale(1.00); }   /* 38 s – zoom reset            */
+  100%   { opacity: 1;  transform: scale(1.00); }   /* 40 s – fades back in         */
+}
+
+@keyframes aims-slide-2 {
+  0%     { opacity: 0;  transform: scale(1.00); }
+  20%    { opacity: 0;  transform: scale(1.00); }   /*  8 s – starts fade-in        */
+  25%    { opacity: 1;  transform: scale(1.00); }   /* 10 s – fully visible         */
+  45%    { opacity: 1;  transform: scale(1.10); }   /* 18 s – still visible         */
+  50%    { opacity: 0;  transform: scale(1.11); }   /* 20 s – faded out             */
+  100%   { opacity: 0;  transform: scale(1.00); }   /* reset for next loop          */
+}
+
+@keyframes aims-slide-3 {
+  0%     { opacity: 0;  transform: scale(1.00); }
+  45%    { opacity: 0;  transform: scale(1.00); }   /* 18 s – starts fade-in        */
+  50%    { opacity: 1;  transform: scale(1.00); }   /* 20 s – fully visible         */
+  70%    { opacity: 1;  transform: scale(1.10); }   /* 28 s – still visible         */
+  75%    { opacity: 0;  transform: scale(1.11); }   /* 30 s – faded out             */
+  100%   { opacity: 0;  transform: scale(1.00); }   /* reset for next loop          */
+}
+
+@keyframes aims-slide-4 {
+  0%     { opacity: 0;  transform: scale(1.00); }
+  70%    { opacity: 0;  transform: scale(1.00); }   /* 28 s – starts fade-in        */
+  75%    { opacity: 1;  transform: scale(1.00); }   /* 30 s – fully visible         */
+  95%    { opacity: 1;  transform: scale(1.10); }   /* 38 s – still visible         */
+  100%   { opacity: 0;  transform: scale(1.11); }   /* 40 s – faded out             */
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;
