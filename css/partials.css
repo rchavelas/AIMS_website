@@ -618,9 +618,11 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 90% 30%, rgba(10,79,156,0.5), transparent 55%);
+  background: linear-gradient(135deg, rgba(10,22,40,0.82) 0%, rgba(0,48,95,0.65) 55%, rgba(10,22,40,0.78) 100%),
+              radial-gradient(ellipse at 90% 30%, rgba(10,79,156,0.4), transparent 55%);
+  z-index: 1;
 }
-.page-hero .container { position: relative; }
+.page-hero .container { position: relative; z-index: 2; }
 .page-hero .breadcrumb {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -673,6 +675,14 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+/* ── Static page-hero background (sub-pages) ──────────────── */
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
 }
 
 /* ── Hero Slideshow ────────────────────────────────────────── */
