@@ -170,13 +170,13 @@ p.lead {
   text-decoration: none;
 }
 .brand-flame {
-  height: 48px;
+  height: 38px;
   width: auto;
   flex-shrink: 0;
 }
 .brand-sep {
   width: 1px;
-  height: 32px;
+  height: 26px;
   background: #c8d2dc;
   margin: 0 14px;
   flex-shrink: 0;
@@ -546,7 +546,7 @@ p.lead {
 
   /* Header */
   .header .container { height: 70px; gap: 12px; }
-  .brand-text .name { font-size: 14px; }
+  .brand-text .name { font-size: 10.5px; }
 
   /* Hamburger */
   .nav-toggle { display: flex; }
