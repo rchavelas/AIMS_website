@@ -58,17 +58,18 @@
   }
   .director-info .position {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 22px;
+    font-weight: 400;
+    font-size: 17px;
     color: var(--aims-blue);
     margin-bottom: 28px;
+    line-height: 1.4;
   }
   .director-info p {
     font-family: var(--font-serif);
     font-size: 18px;
     line-height: 1.55;
     color: var(--aims-text);
-    max-width: 560px;
+    max-width: 100%;
     margin: 0 0 22px;
     font-weight: 300;
   }
@@ -185,6 +186,7 @@
     .director-band { padding: 52px 0; }
     .director-grid { grid-template-columns: 1fr; gap: 28px; }
     .director-portrait { max-width: 280px; }
+    .director-info p { text-align: justify; }
     .area-section { padding: 52px 0; }
     .area-head { grid-template-columns: 1fr; gap: 8px; }
     .area-head .area-num { font-size: 56px; }
@@ -260,48 +262,32 @@
   </div>
 </section>
 
-<!-- FILTER STRIP -->
-<section class="filters">
-  <div class="container">
-    <div class="row">
-      <span class="eyebrow" style="margin-right: 12px;">FILTER</span>
-      <span class="tag solid">All</span>
-      <span class="tag">Smart Manufacturing</span>
-      <span class="tag">Industrial AI</span>
-      <span class="tag">Supply Chain</span>
-      <span class="tag">LIFT Lab</span>
-      <span style="width: 1px; height: 28px; background: var(--aims-line); margin: 0 10px;"></span>
-      <span class="tag">Monterrey</span>
-      <span class="tag">CDMX</span>
-      <span class="tag">Guadalajara</span>
-      <span class="tag">Querétaro</span>
-      <span style="margin-left: auto; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--aims-text-muted);">42 PEOPLE</span>
-    </div>
-  </div>
-</section>
 
 <!-- DIRECTOR -->
 <section class="director-band" data-screen-label="02 Director">
   <div class="container">
     <div class="director-grid">
-      <div class="director-portrait" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=720&q=80');"></div>
+      <div class="director-portrait" style="background-image: url('img/Josue.jpg');"></div>
       <div class="director-info">
         <div class="role">Director · AIMS Institute</div>
         <h2>Josué C. Velázquez Martínez, PhD</h2>
-        <div class="position">Director, AIMS Institute · Tec de Monterrey</div>
+        <div class="position">Director, AI for Manufacturing and Supply Chain Institute, Tecnologico de Monterrey <br> Research Affiliate, MIT Center for Transportation and Logistics</div>
         <p>
-          Founding Director of the LIFT Lab at MIT CTL and affiliated researcher with over a decade applying artificial intelligence to real supply chains. At AIMS he leads the convergence of research, deployment and industrial impact.
+          Dr. Velázquez Martínez leads AIMS at the intersection of artificial intelligence, manufacturing systems and supply chain operations. He spent over a decade as Research Scientist and Lecturer at the MIT Center for Transportation &amp; Logistics, leading its SCM master's program, the SCALE Latin America Network, and the Sustainable Supply Chain Lab. He is the founder of the MIT LIFT Lab, now expanding at Tec de Monterrey, which applies AI to the supply chain challenges of micro and small enterprises in emerging markets. He holds a PhD in Industrial Engineering from Tec de Monterrey, graduated with highest distinction and recipient of the 2014 National Doctoral Dissertation Award.
         </p>
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <span class="tag">Supply Chain</span>
+          <span class="tag">Supply Chains</span>
+          <span class="tag">Sustainability</span>
           <span class="tag">LIFT Lab</span>
-          <span class="tag">MIT CTL · Affiliate</span>
           <span class="tag">Economic Inclusion</span>
         </div>
+        <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+          <a href="https://www.linkedin.com/in/josuevm/" target="_blank" rel="noopener" class="btn btn-primary">LinkedIn <span class="arrow">→</span></a>
+          <a href="https://josue.mit.edu/" target="_blank" rel="noopener" class="btn btn-ghost">Full profile →</a>
+        </div>
         <div class="contact-row">
-          <span><a href="mailto:josuevm@tec.mx">josuevm@tec.mx</a></span>
+          <span><a href="mailto:josuevm@mit.edu">josuevm@mit.edu</a></span>
           <span>Monterrey Campus</span>
-          <span><a href="#">Full profile →</a></span>
         </div>
       </div>
     </div>
@@ -542,7 +528,7 @@
           </div>
           <span class="arrow-big">→</span>
         </a>
-        <a href="#" class="join-option">
+        <a href="https://maestriasydiplomados.tec.mx/doctorados" target="_blank" rel="noopener" class="join-option">
           <div>
             <div class="role">PhD &amp; Graduate</div>
             <h4>Doctoral Programs</h4>
