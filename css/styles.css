@@ -390,7 +390,7 @@ p.lead {
 .footer a:hover { color: #fff; }
 .footer .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 56px;
   padding-bottom: 56px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -527,7 +527,7 @@ p.lead {
   .section-head .right { padding-bottom: 0; }
 
   .footer .footer-grid {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 36px;
   }
 
