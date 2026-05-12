@@ -140,7 +140,7 @@
   .person-card .info .links a { color: var(--aims-blue); }
 
   .join-band { background: var(--aims-ink); color: #fff; padding: 90px 0; }
-  .join-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .join-grid { display: grid; grid-template-columns: 1fr; gap: 48px; }
   .join-band h2 {
     color: #fff;
     font-family: var(--font-serif);
@@ -150,14 +150,14 @@
     margin: 0 0 20px;
   }
   .join-band p { color: #b6c2d2; font-family: var(--font-serif); font-size: 18px; max-width: 480px; line-height: 1.5; }
-  .join-options { display: grid; gap: 16px; }
+  .join-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .join-option {
     border: 1px solid rgba(255,255,255,0.18);
     padding: 24px 28px;
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 24px;
-    align-items: center;
+    align-items: start;
     transition: all 0.2s ease;
   }
   .join-option:hover { border-color: var(--aims-accent); background: rgba(232,90,44,0.06); }
@@ -180,7 +180,7 @@
     .people-grid { grid-template-columns: repeat(3, 1fr); }
     .area-head { grid-template-columns: 140px 1fr 140px; gap: 24px; }
     .area-head .area-num { font-size: 72px; }
-    .join-grid { grid-template-columns: 1fr; gap: 40px; }
+    .join-options { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
     .director-band { padding: 52px 0; }
@@ -194,6 +194,7 @@
     .people-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .join-band { padding: 60px 0; }
     .join-grid { grid-template-columns: 1fr; gap: 32px; }
+    .join-options { grid-template-columns: 1fr; }
     .join-option { grid-template-columns: 1fr; }
     .join-option .arrow-big { display: none; }
   }
@@ -221,7 +222,7 @@
 <!-- HEADER -->
 <header class="header">
   <div class="container">
-    <a href="index.html" class="brand">
+    <a href="home.html" class="brand">
       <img src="uploads/tec-logo.svg" alt="Tec de Monterrey" class="brand-flame">
       <div class="brand-sep"></div>
       <div class="brand-text">
@@ -229,7 +230,7 @@
       </div>
     </a>
     <nav class="nav" id="mainNav">
-      <a href="index.html">Home</a>
+      <a href="home.html">Home</a>
       <a href="research.html">Research</a>
       <a href="people.html" class="active">People</a>
       <a href="partners.html">Industry Partners</a>
@@ -253,7 +254,7 @@
   </div>
   <div class="container">
     <div class="breadcrumb">
-      <a href="index.html">Home</a>
+      <a href="home.html">Home</a>
       <span class="sep">/</span>
       <span class="current">People</span>
     </div>
@@ -283,11 +284,7 @@
         </div>
         <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
           <a href="https://www.linkedin.com/in/josuevm/" target="_blank" rel="noopener" class="btn btn-primary">LinkedIn <span class="arrow">→</span></a>
-          <a href="https://josue.mit.edu/" target="_blank" rel="noopener" class="btn btn-ghost">Full profile →</a>
-        </div>
-        <div class="contact-row">
-          <span><a href="mailto:josuevm@mit.edu">josuevm@mit.edu</a></span>
-          <span>Monterrey Campus</span>
+          <a href="josue.html" target="_blank" rel="noopener" class="btn btn-ghost">Full profile →</a>
         </div>
       </div>
     </div>
@@ -301,45 +298,45 @@
       <div class="area-num">01</div>
       <div>
         <span class="eyebrow"><span class="dot"></span>Smart Manufacturing</span>
-        <h2 style="margin-top: 14px;">Smart manufacturing, automation &amp; materials</h2>
+        <h2 style="margin-top: 14px;">Smart Manufacturing, Automation &amp; Materials for Manufacturing.</h2>
       </div>
-      <div class="count">12 RESEARCHERS<br>06 LABORATORIES</div>
+      <div class="count tbd">12 RESEARCHERS<br>06 LABORATORIES</div>
     </div>
     <div class="people-grid">
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Ricardo Ortega, PhD</h4>
           <div class="title">Lead Researcher · Smart Manufacturing</div>
           <div class="area">Robotics · Materials</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Patricia Mendoza, PhD</h4>
           <div class="title">Senior Researcher · Advanced Materials</div>
           <div class="area">Materials · Sustainability</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Carlos Iván Rodríguez, PhD</h4>
           <div class="title">Senior Researcher · Additive Manufacturing</div>
           <div class="area">Additive · Hybrid</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Sofía Gutiérrez, PhD</h4>
           <div class="title">Researcher · Industrial Automation</div>
           <div class="area">Robotics · Control</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
     </div>
@@ -353,45 +350,45 @@
       <div class="area-num">02</div>
       <div>
         <span class="eyebrow"><span class="dot"></span>Industrial AI</span>
-        <h2 style="margin-top: 14px;">Artificial intelligence for industrial systems</h2>
+        <h2 style="margin-top: 14px;">Artificial Intelligence for Industrial Systems.</h2>
       </div>
-      <div class="count">14 RESEARCHERS<br>05 LABORATORIES</div>
+      <div class="count tbd">14 RESEARCHERS<br>05 LABORATORIES</div>
     </div>
     <div class="people-grid">
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>María Fernanda Ríos, PhD</h4>
           <div class="title">Lead Researcher · Industrial AI</div>
           <div class="area">ML · Digital Twins</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Diego Hernández, PhD</h4>
           <div class="title">Senior Researcher · Computer Vision</div>
           <div class="area">CV · Inspection</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Adriana Salazar, PhD</h4>
           <div class="title">Senior Researcher · Autonomous Systems</div>
           <div class="area">Decision · RL</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Jorge Méndez, PhD</h4>
           <div class="title">Researcher · Energy Optimization</div>
           <div class="area">Energy · Operations</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
     </div>
@@ -405,45 +402,45 @@
       <div class="area-num">03</div>
       <div>
         <span class="eyebrow"><span class="dot"></span>Supply Chain</span>
-        <h2 style="margin-top: 14px;">Supply chain &amp; logistics systems</h2>
+        <h2 style="margin-top: 14px;">Supply Chain &amp; Logistics Systems.</h2>
       </div>
-      <div class="count">10 RESEARCHERS<br>04 LABORATORIES</div>
+      <div class="count tbd">10 RESEARCHERS<br>04 LABORATORIES</div>
     </div>
     <div class="people-grid">
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Laura Beltrán, PhD</h4>
           <div class="title">Senior Researcher · Resilience &amp; Optimization</div>
           <div class="area">Optimization · Networks</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Andrés Pérez, PhD</h4>
           <div class="title">Senior Researcher · Last-Mile Logistics</div>
           <div class="area">Logistics · Urban</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1598550874175-4d0ef436c909?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Mariana Torres, PhD</h4>
           <div class="title">Researcher · Scope 3 &amp; Sustainability</div>
           <div class="area">Emissions · Traceability</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Roberto Ayala, PhD</h4>
           <div class="title">Researcher · Warehouses of the Future</div>
           <div class="area">Robotics · WMS</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
     </div>
@@ -456,46 +453,46 @@
     <div class="area-head">
       <div class="area-num">04</div>
       <div>
-        <span class="eyebrow"><span class="dot"></span>LIFT Lab · MIT CTL</span>
-        <h2 style="margin-top: 14px;">Low-Income Firms Transformation Lab</h2>
+        <span class="eyebrow"><span class="dot"></span>LIFT Lab (In partnership with MIT CTL)</span>
+        <h2 style="margin-top: 14px;">Low-Income Firms Transformation Lab.</h2>
       </div>
-      <div class="count">06 RESEARCHERS<br>+5K SMEs</div>
+      <div class="count tbd">06 RESEARCHERS<br>+5K SMEs</div>
     </div>
     <div class="people-grid">
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Ana Lucía Estrada, PhD</h4>
           <div class="title">Director · LIFT Lab México</div>
           <div class="area">SMEs · Public Policy</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Fernanda Cárdenas, PhD</h4>
           <div class="title">Senior Researcher · AI with Sparse Data</div>
           <div class="area">Few-shot · Vision</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Tomás Vega, PhD</h4>
           <div class="title">Researcher · AI Avatars &amp; Tutors</div>
           <div class="area">NLP · Training</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
       <article class="person-card">
-        <div class="portrait" style="background-image: url('https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=400&q=80');"></div>
+        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
         <div class="info">
           <h4>Valeria Núñez, PhD</h4>
           <div class="title">Researcher · Inclusive Supply Chains</div>
           <div class="area">Inclusion · Field Research</div>
-          <div class="links"><a href="#">CV</a><a href="#">Profile</a></div>
+          <div class="links"><a href="#">CV</a></div>
         </div>
       </article>
     </div>
@@ -512,25 +509,41 @@
         <p>We seek researchers, postdoctoral fellows and doctoral students willing to work on real industrial problems — with real industrial partners.</p>
       </div>
       <div class="join-options">
-        <a href="#" class="join-option">
+        <a href="https://jobs.tec.mx/tecnologico-de-monterrey/job/Monterrey-L%C3%ADder-de-Unidad-de-Investigaci%C3%B3n-IAMSM-Supply-Chain-and-Logistics-Systems/1372314000/" target="_blank" rel="noopener" class="join-option">
+          <div>
+            <div class="role">Leadership Position</div>
+            <h4>Unit Leader, Supply Chain and Logistics Systems</h4>
+            <p class="desc">Lead applied research in supply chain analytics, logistics network design, and resilience — securing external funding and managing interdisciplinary teams in collaboration with industry and government partners. Doctorate in SCM, Industrial Engineering, or Operations Research required.</p>
+          </div>
+          <span class="arrow-big">→</span>
+        </a>
+        <a href="https://jobs.tec.mx/tecnologico-de-monterrey/job/Monterrey-Profesor%28a%29-Investigador-%28a%29-IAMSM-IA-for-Industry/1373343400/" target="_blank" rel="noopener" class="join-option">
           <div>
             <div class="role">Faculty Position</div>
-            <h4>Professor / Associate Researcher</h4>
-            <p class="desc">Full-time positions across four research areas. Academic track with integrated industrial engagement.</p>
+            <h4>Full time faculty position, Artificial Intelligence for Industrial Systems</h4>
+            <p class="desc">Applied research in AI for industrial systems — digital twins, intelligent control, and predictive analytics for manufacturing and supply chains. Ph.D. in AI, Computer Science, Industrial Engineering, or related field required.</p>
+          </div>
+          <span class="arrow-big">→</span>
+        </a>
+        <a href="https://jobs.tec.mx/tecnologico-de-monterrey/job/Monterrey-Profesor-%28a%29-Investigador-%28a%29-IAMSM-Supply-Chain-y-Log%C3%ADstica/1373331900/" target="_blank" rel="noopener" class="join-option">
+          <div>
+            <div class="role">Faculty Position</div>
+            <h4>Full time faculty position, Supply Chain and Logistics Systems</h4>
+            <p class="desc">Applied research in supply chain analytics, logistics network design, resilience management, and sustainable supply chains, in collaboration with industry. Ph.D. in Supply Chain Management, Industrial Engineering, or Operations Research required.</p>
           </div>
           <span class="arrow-big">→</span>
         </a>
         <a href="#" class="join-option">
           <div>
             <div class="role">Postdoctoral</div>
-            <h4>Postdoctoral Fellowship</h4>
-            <p class="desc">2–3 year fellowships on co-funded projects with industrial partners. Direct mentorship with area leads.</p>
+            <h4>Postdoctoral Researcher, AI for Manufacturing &amp; Supply Chain</h4>
+            <p class="desc">Research-intensive role working directly with the AIMS Director on AI, supply chains, and manufacturing systems — bridging academic rigor with industry deployment across sponsored projects, tool development, and graduate mentoring. Based in Mexico City. PhD in operations research, industrial engineering, CS, or related field required.</p>
           </div>
           <span class="arrow-big">→</span>
         </a>
         <a href="https://maestriasydiplomados.tec.mx/doctorados" target="_blank" rel="noopener" class="join-option">
           <div>
-            <div class="role">PhD &amp; Graduate</div>
+            <div class="role">Graduate</div>
             <h4>Doctoral Programs</h4>
             <p class="desc">Doctoral students linked to AIMS research lines within Tec programs, with industrial co-supervision.</p>
           </div>
@@ -547,7 +560,7 @@
     <div class="footer-grid">
       <div><ul style="color: #b6c2d2;"><li>Expedition FEMSA</li><li>Av. Eugenio Garza Sada No. 2445</li><li>Col. Tecnológico, 64700</li><li>Monterrey, N.L.</li></ul></div>
       <div><h4>Institute</h4><ul><li><a href="research.html">Research</a></li><li><a href="people.html">Faculty</a></li><li><a href="partners.html">Partnerships</a></li><li><a href="events.html">Events</a></li><li><a href="publications.html">Publications</a></li></ul></div>
-      <div><h4>Connect</h4><ul><li><a href="#">Newsletter</a></li><li><a href="mailto:ricardo.chavelas@tec.mx">Contact</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="home.html#newsletter">Newsletter</a></li><li><a href="mailto:ricardo.chavelas@tec.mx">Contact</a></li></ul></div>
       <div><h4>Tec de Monterrey</h4><ul><li><a href="#">VP of Research</a></li><li><a href="#">tec.mx/research</a></li><li><a href="#">Doctoral Programs</a></li></ul></div>
     </div>
     <div class="footer-bottom">

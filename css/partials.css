@@ -560,6 +560,23 @@
   border-top: 1px solid var(--aims-stone);
 }
 
+/* ===== TBD placeholder ===== */
+.tbd {
+  background: rgba(251, 191, 36, 0.2);
+  color: #92400e;
+  padding: 0 5px;
+  border-radius: 3px;
+  outline: 1px dashed rgba(180, 83, 9, 0.4);
+  font-style: italic;
+  cursor: default;
+}
+.tbd::after {
+  content: ' ·  TBD';
+  font-size: 0.8em;
+  opacity: 0.7;
+  font-style: normal;
+}
+
 /* ===== CTA banner ===== */
 .cta-banner {
   background: var(--aims-accent);
@@ -672,6 +689,7 @@
   letter-spacing: 0.07em;
   color: var(--aims-text-faint);
   text-transform: uppercase;
+  text-align: right;
 }
 
 /* ===== Page hero (subpage) ===== */
