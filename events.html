@@ -258,55 +258,12 @@
   .past-item .past-links a { color: var(--aims-blue); }
   .past-item .past-links a:hover { color: var(--aims-accent); }
 
-  /* ===== Newsletter CTA ===== */
-  .newsletter-band {
-    background: var(--aims-ink);
-    padding: 80px 0;
-  }
-  .newsletter-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
-  .newsletter-band h2 { color: #fff; font-family: var(--font-serif); font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 16px; }
-  .newsletter-band p { color: #b6c2d2; font-family: var(--font-serif); font-size: 18px; line-height: 1.5; max-width: 440px; margin: 0; }
-  .newsletter-form { display: flex; gap: 0; }
-  .newsletter-form input {
-    flex: 1;
-    padding: 14px 18px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-right: 0;
-    background: rgba(255,255,255,0.07);
-    font-family: var(--font-sans);
-    font-size: 15px;
-    color: #fff;
-    outline: none;
-    border-radius: 0;
-  }
-  .newsletter-form input::placeholder { color: #6f7e92; }
-  .newsletter-form input:focus { border-color: var(--aims-accent); background: rgba(255,255,255,0.1); }
-  .newsletter-form button {
-    padding: 14px 24px;
-    background: var(--aims-accent);
-    color: #fff;
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s ease;
-    white-space: nowrap;
-  }
-  .newsletter-form button:hover { background: #d04915; }
-
   /* Mobile */
   @media (max-width: 1024px) {
     .event-feat-grid { grid-template-columns: 1fr; gap: 36px; }
     .events-grid { grid-template-columns: repeat(2, 1fr); }
     .past-item { grid-template-columns: 100px 1fr 140px; }
     .past-item .past-links { grid-column: 1 / -1; justify-content: flex-start; }
-    .newsletter-grid { grid-template-columns: 1fr; gap: 36px; }
   }
   @media (max-width: 768px) {
     .event-featured { padding: 52px 0; }
@@ -318,10 +275,6 @@
     .past-item .past-type { text-align: left; }
     .past-item .past-links { justify-content: flex-start; }
     .event-meta-row { grid-template-columns: 1fr 1fr; }
-    .newsletter-band { padding: 52px 0; }
-    .newsletter-form { flex-direction: column; }
-    .newsletter-form input { border-right: 1px solid rgba(255,255,255,0.2); border-bottom: 0; }
-    .newsletter-form button { width: 100%; }
   }
 </style>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -389,32 +342,31 @@
 <section class="event-featured" data-screen-label="02 Featured">
   <div class="container">
     <div class="event-feat-grid">
-      <div class="event-feat-img" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=80');">
-        <div class="overlay"></div>
+      <div class="event-feat-img" style="background-color: #001a4d; background-image: url('uploads/lift-lab-logo-blanco.png'); background-size: 65%; background-repeat: no-repeat; background-position: center;">
+        <div class="overlay" style="background: linear-gradient(135deg, rgba(0,20,70,0.25), rgba(0,10,40,0.15));"></div>
         <div class="date-badge">
-          SEPT 18–19, 2026<br>MONTERREY · NL
+          MAY 29, 2026<br>MONTERREY · NL
         </div>
       </div>
       <div class="event-feat-body">
-        <div class="type-pill"><span class="dot" style="width:6px;height:6px;background:var(--aims-accent);border-radius:50%;display:inline-block;"></span> FLAGSHIP CONFERENCE</div>
-        <h2>AIMS Summit 2026: AI-Driven Industrial Transformation</h2>
-        <p>The annual AIMS gathering brings together leading researchers, industry executives and policymakers to explore the frontier of AI in manufacturing and supply chains. Two days of keynotes, case studies and structured networking.</p>
+        <div class="type-pill"><span class="dot" style="width:6px;height:6px;background:var(--aims-accent);border-radius:50%;display:inline-block;"></span> LAUNCH EVENT &nbsp;·&nbsp; BY INVITATION ONLY</div>
+        <h2>MIT LIFT Lab Research Fest @ TEC 2026</h2>
+        <p>The formal launch of the LIFT Lab's new chapter at Tecnológico de Monterrey — a milestone in the partnership between MIT Center for Transportation &amp; Logistics and Tec. Featuring a keynote by <strong>Dr. Matthias Winkenbach</strong>, Director of Research at MIT CTL, and a welcome address by Dr. Javier Guzmán, VP of Research at Tec de Monterrey.</p>
         <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="#" class="btn btn-primary">Register now <span class="arrow">→</span></a>
-          <a href="#" class="btn btn-ghost">Program overview</a>
+          <a href="#" class="btn btn-primary">Request invitation <span class="arrow">→</span></a>
         </div>
         <div class="event-meta-row">
           <div class="meta-item">
             <div class="lbl">Format</div>
-            <div class="val">In-person + livestream</div>
+            <div class="val">Hybrid</div>
           </div>
           <div class="meta-item">
-            <div class="lbl">Audience</div>
-            <div class="val">~300 attendees</div>
+            <div class="lbl">Access</div>
+            <div class="val">By invitation only</div>
           </div>
           <div class="meta-item">
-            <div class="lbl">Languages</div>
-            <div class="val">English / Spanish</div>
+            <div class="lbl">Keynote</div>
+            <div class="val">Dr. Matthias Winkenbach · MIT</div>
           </div>
         </div>
       </div>
@@ -444,11 +396,11 @@
           <span class="type-tag">Executive Roundtable</span>
         </div>
         <div class="card-body">
-          <div class="card-date">July 10, 2026 · Monterrey</div>
-          <h3>Supply Chain Resilience in a Fragmented World</h3>
-          <p>Closed-door executive roundtable for Strategic and Founding members. Dr. Velázquez Martínez and the Supply Chain team will present fresh research findings and facilitate structured discussion.</p>
+          <div class="card-date tbd">Date</div>
+          <h3 class="tbd">Event title</h3>
+          <p>Details coming soon. Stay tuned for our upcoming executive roundtable bringing together researchers and industry leaders.</p>
           <div class="card-footer">
-            <span>Strategic &amp; Founding members</span>
+            <span>By invitation</span>
             <a href="#" class="register-link">Request access →</a>
           </div>
         </div>
@@ -459,9 +411,9 @@
           <span class="type-tag">Workshop</span>
         </div>
         <div class="card-body">
-          <div class="card-date">July 24, 2026 · Online</div>
-          <h3>Hands-On: Digital Twins for Plant-Floor Optimization</h3>
-          <p>Technical workshop for engineers and data scientists. Build and deploy a simplified digital twin using AIMS open-source tools. Limited to 40 participants.</p>
+          <div class="card-date tbd">Date</div>
+          <h3 class="tbd">Event title</h3>
+          <p>Details coming soon. An upcoming technical workshop for engineers, data scientists and researchers from the AIMS community.</p>
           <div class="card-footer">
             <span>Open registration</span>
             <a href="#" class="register-link">Register →</a>
@@ -474,56 +426,11 @@
           <span class="type-tag">Seminar</span>
         </div>
         <div class="card-body">
-          <div class="card-date">Aug 7, 2026 · Monterrey</div>
-          <h3>AIMS Research Seminar: Scope 3 Traceability with Imperfect Data</h3>
-          <p>Research presentation by Dr. Mariana Torres with open Q&amp;A. Explores new methods for Scope 3 emissions tracking across fragmented Mexican supply chains.</p>
+          <div class="card-date tbd">Date</div>
+          <h3 class="tbd">Event title</h3>
+          <p>Details coming soon. An upcoming AIMS Research Seminar featuring presentations and open Q&amp;A with our research faculty.</p>
           <div class="card-footer">
             <span>Open to the public</span>
-            <a href="#" class="register-link">Register →</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="event-card">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=700&q=80');">
-          <span class="type-tag">Roundtable</span>
-        </div>
-        <div class="card-body">
-          <div class="card-date">Aug 21, 2026 · CDMX</div>
-          <h3>Industrial AI Adoption: What's Actually Working</h3>
-          <p>A practitioner-led roundtable featuring three industrial partners sharing candid assessments of AI deployment in their operations — what succeeded, what didn't, and why.</p>
-          <div class="card-footer">
-            <span>All members</span>
-            <a href="#" class="register-link">Register →</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="event-card">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=700&q=80');">
-          <span class="type-tag">Webinar</span>
-        </div>
-        <div class="card-body">
-          <div class="card-date">Sept 4, 2026 · Online</div>
-          <h3>LIFT Lab Mexico: 6-Month Field Deployment Update</h3>
-          <p>Ana Lucía Estrada presents the first cohort results of LIFT Lab Mexico — AI tools for SMEs, adoption rates and preliminary productivity data from the field.</p>
-          <div class="card-footer">
-            <span>Open registration</span>
-            <a href="#" class="register-link">Register →</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="event-card">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=700&q=80');">
-          <span class="type-tag">Conference</span>
-        </div>
-        <div class="card-body">
-          <div class="card-date">Sept 18–19, 2026 · Monterrey</div>
-          <h3>AIMS Summit 2026 — Flagship Annual Conference</h3>
-          <p>Two days of keynotes, research presentations, industry case studies, structured networking and the AIMS Industrial Impact Award ceremony. Our largest public event of the year.</p>
-          <div class="card-footer">
-            <span>Open registration</span>
             <a href="#" class="register-link">Register →</a>
           </div>
         </div>
@@ -534,7 +441,7 @@
 </section>
 
 <!-- PAST EVENTS -->
-<section class="past-section" data-screen-label="04 Past">
+<section class="past-section" data-screen-label="04 Past" style="display: none;">
   <div class="container">
     <div class="section-head">
       <div class="left">
@@ -621,23 +528,23 @@
 </section>
 
 <!-- NEWSLETTER -->
-<section class="newsletter-band" data-screen-label="05 Newsletter">
+<section class="newsletter-band" id="newsletter" data-screen-label="05 Newsletter">
   <div class="container">
-    <div class="newsletter-grid">
-      <div>
-        <span class="eyebrow" style="color: #8aa0bd;"><span class="dot"></span>Stay informed</span>
-        <h2 style="margin-top: 14px;">Never miss an AIMS event<br>or research insight.</h2>
-        <p>Monthly newsletter with upcoming events, new publications and industry case studies. No noise — just relevant signal.</p>
+    <div class="newsletter-inner">
+      <div class="newsletter-copy">
+        <span class="eyebrow"><span class="dot"></span>Monthly newsletter</span>
+        <h2>Systems in Motion</h2>
+        <p>A curated monthly digest of research highlights, emerging applications, and industry intelligence from AIMS — open to anyone tracking advanced technology and research in manufacturing and supply chains.</p>
+        <p class="nl-note">Drawn from our full tiered newsletter, shared with partners and research collaborators.</p>
       </div>
-      <div>
-        <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8aa0bd; margin-bottom: 14px;">SUBSCRIBE TO NEWSLETTER</div>
-        <div class="newsletter-form">
-          <input type="email" placeholder="your@email.com" />
-          <button type="submit">Subscribe →</button>
-        </div>
-        <p style="margin: 14px 0 0; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; color: #4a5f7a;">
-          No spam. Unsubscribe at any time. ~1,800 subscribers.
-        </p>
+      <div class="newsletter-form-wrap">
+        <form class="nl-form" action="#" method="post">
+          <div class="nl-row">
+            <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+            <button type="submit" class="btn btn-primary">Subscribe <span class="arrow">→</span></button>
+          </div>
+          <p class="nl-fine">Monthly cadence &nbsp;·&nbsp; No spam &nbsp;·&nbsp; Unsubscribe anytime</p>
+        </form>
       </div>
     </div>
   </div>
