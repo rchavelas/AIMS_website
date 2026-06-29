@@ -174,6 +174,136 @@
   .join-option .arrow-big { font-family: var(--font-serif); font-size: 32px; color: rgba(255,255,255,0.4); }
   .join-option:hover .arrow-big { color: var(--aims-accent); }
 
+  /* Associate Research Directors */
+  .assoc-band {
+    background: var(--aims-paper);
+    padding: 80px 0;
+    border-bottom: 1px solid var(--aims-line);
+  }
+  .assoc-section-head {
+    margin-bottom: 48px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--aims-line);
+  }
+  .assoc-section-head h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 3vw, 42px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 12px 0 0;
+    color: var(--aims-ink);
+  }
+  .assoc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .assoc-card {
+    border: 1px solid var(--aims-line);
+    background: #fff;
+  }
+  .assoc-portrait {
+    aspect-ratio: 4/5;
+    background-size: cover;
+    background-position: center top;
+    background-color: var(--aims-bone);
+  }
+  .assoc-info {
+    padding: 20px 22px 22px;
+  }
+  .assoc-info .assoc-role {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--aims-accent);
+    margin-bottom: 10px;
+  }
+  .assoc-info h4 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--aims-ink);
+    margin: 0 0 14px;
+    line-height: 1.3;
+  }
+  .assoc-areas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .assoc-links {
+    display: flex;
+    gap: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--aims-line);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .assoc-links a { color: var(--aims-blue); }
+
+  /* Roster */
+  .roster-band {
+    padding: 80px 0;
+    border-top: 1px solid var(--aims-line);
+    border-bottom: 1px solid var(--aims-line);
+  }
+  .roster-head {
+    margin-bottom: 48px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--aims-line);
+  }
+  .roster-head h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 3vw, 42px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 12px 0 0;
+    color: var(--aims-ink);
+  }
+  .roster-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+  .roster-group h3 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--aims-text-muted);
+    margin: 0 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--aims-ink);
+  }
+  .roster-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .roster-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--aims-line);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .roster-name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--aims-ink);
+  }
+  .roster-name a { color: var(--aims-blue); }
+  .roster-role {
+    font-size: 13px;
+    color: var(--aims-text-muted);
+    line-height: 1.4;
+  }
+
   /* Mobile */
   @media (max-width: 1024px) {
     .director-grid { grid-template-columns: 280px 1fr; gap: 40px; }
@@ -181,6 +311,8 @@
     .area-head { grid-template-columns: 140px 1fr 140px; gap: 24px; }
     .area-head .area-num { font-size: 72px; }
     .join-options { grid-template-columns: 1fr; }
+    .assoc-grid { grid-template-columns: repeat(2, 1fr); }
+    .roster-cols { grid-template-columns: repeat(2, 1fr); gap: 36px; }
   }
   @media (max-width: 768px) {
     .director-band { padding: 52px 0; }
@@ -197,9 +329,14 @@
     .join-options { grid-template-columns: 1fr; }
     .join-option { grid-template-columns: 1fr; }
     .join-option .arrow-big { display: none; }
+    .assoc-band { padding: 52px 0; }
+    .assoc-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .roster-band { padding: 52px 0; }
+    .roster-cols { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
     .people-grid { grid-template-columns: 1fr 1fr; }
+    .assoc-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -290,216 +427,180 @@
   </div>
 </section>
 
-<!-- AREA: SMART MANUFACTURING -->
-<section class="area-section">
+<!-- ASSOCIATE RESEARCH DIRECTORS -->
+<section class="assoc-band" data-screen-label="03 Associate Directors">
   <div class="container">
-    <div class="area-head">
-      <div class="area-num">01</div>
-      <div>
-        <span class="eyebrow"><span class="dot"></span>Smart Manufacturing</span>
-        <h2 style="margin-top: 14px;">Smart Manufacturing, Automation &amp; Materials for Manufacturing.</h2>
-      </div>
-      <div class="count tbd">12 RESEARCHERS<br>06 LABORATORIES</div>
+    <div class="assoc-section-head">
+      <span class="eyebrow"><span class="dot"></span>Leadership</span>
+      <h2>Associate Research Directors</h2>
     </div>
-    <div class="people-grid">
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Ricardo Ortega, PhD</h4>
-          <div class="title">Lead Researcher · Smart Manufacturing</div>
-          <div class="area">Robotics · Materials</div>
-          <div class="links"><a href="#">CV</a></div>
+    <div class="assoc-grid">
+
+      <article class="assoc-card">
+        <div class="assoc-portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
+        <div class="assoc-info">
+          <div class="assoc-role">Associate Research Director</div>
+          <h4 class="tbd">Name, PhD</h4>
+          <div class="assoc-areas">
+            <span class="tag tbd">Research Area</span>
+            <span class="tag tbd">Research Area</span>
+          </div>
+          <div class="assoc-links">
+            <a href="#">CV</a>
+            <a href="#">Research Focus</a>
+          </div>
         </div>
       </article>
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Patricia Mendoza, PhD</h4>
-          <div class="title">Senior Researcher · Advanced Materials</div>
-          <div class="area">Materials · Sustainability</div>
-          <div class="links"><a href="#">CV</a></div>
+
+      <article class="assoc-card">
+        <div class="assoc-portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
+        <div class="assoc-info">
+          <div class="assoc-role">Associate Research Director</div>
+          <h4 class="tbd">Name, PhD</h4>
+          <div class="assoc-areas">
+            <span class="tag tbd">Research Area</span>
+            <span class="tag tbd">Research Area</span>
+          </div>
+          <div class="assoc-links">
+            <a href="#">CV</a>
+            <a href="#">Research Focus</a>
+          </div>
         </div>
       </article>
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Carlos Iván Rodríguez, PhD</h4>
-          <div class="title">Senior Researcher · Additive Manufacturing</div>
-          <div class="area">Additive · Hybrid</div>
-          <div class="links"><a href="#">CV</a></div>
+
+      <article class="assoc-card">
+        <div class="assoc-portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
+        <div class="assoc-info">
+          <div class="assoc-role">Associate Research Director</div>
+          <h4 class="tbd">Name, PhD</h4>
+          <div class="assoc-areas">
+            <span class="tag tbd">Research Area</span>
+            <span class="tag tbd">Research Area</span>
+          </div>
+          <div class="assoc-links">
+            <a href="#">CV</a>
+            <a href="#">Research Focus</a>
+          </div>
         </div>
       </article>
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Sofía Gutiérrez, PhD</h4>
-          <div class="title">Researcher · Industrial Automation</div>
-          <div class="area">Robotics · Control</div>
-          <div class="links"><a href="#">CV</a></div>
+
+      <article class="assoc-card">
+        <div class="assoc-portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
+        <div class="assoc-info">
+          <div class="assoc-role">Associate Research Director</div>
+          <h4 class="tbd">Name, PhD</h4>
+          <div class="assoc-areas">
+            <span class="tag tbd">Research Area</span>
+            <span class="tag tbd">Research Area</span>
+          </div>
+          <div class="assoc-links">
+            <a href="#">CV</a>
+            <a href="#">Research Focus</a>
+          </div>
         </div>
       </article>
+
     </div>
   </div>
 </section>
 
-<!-- AREA: INDUSTRIAL AI -->
-<section class="area-section">
+<!-- ROSTER: RESEARCHERS, POSTDOCS & STAFF -->
+<section class="roster-band" data-screen-label="05 Roster">
   <div class="container">
-    <div class="area-head">
-      <div class="area-num">02</div>
-      <div>
-        <span class="eyebrow"><span class="dot"></span>Industrial AI</span>
-        <h2 style="margin-top: 14px;">Artificial Intelligence for Industrial Systems.</h2>
-      </div>
-      <div class="count tbd">14 RESEARCHERS<br>05 LABORATORIES</div>
+    <div class="roster-head">
+      <span class="eyebrow"><span class="dot"></span>Research Community</span>
+      <h2>Researchers, Postdocs &amp; Staff</h2>
     </div>
-    <div class="people-grid">
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>María Fernanda Ríos, PhD</h4>
-          <div class="title">Lead Researcher · Industrial AI</div>
-          <div class="area">ML · Digital Twins</div>
-          <div class="links"><a href="#">CV</a></div>
-        </div>
-      </article>
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Diego Hernández, PhD</h4>
-          <div class="title">Senior Researcher · Computer Vision</div>
-          <div class="area">CV · Inspection</div>
-          <div class="links"><a href="#">CV</a></div>
-        </div>
-      </article>
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Adriana Salazar, PhD</h4>
-          <div class="title">Senior Researcher · Autonomous Systems</div>
-          <div class="area">Decision · RL</div>
-          <div class="links"><a href="#">CV</a></div>
-        </div>
-      </article>
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Jorge Méndez, PhD</h4>
-          <div class="title">Researcher · Energy Optimization</div>
-          <div class="area">Energy · Operations</div>
-          <div class="links"><a href="#">CV</a></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+    <div class="roster-cols">
 
-<!-- AREA: SUPPLY CHAIN -->
-<section class="area-section">
-  <div class="container">
-    <div class="area-head">
-      <div class="area-num">03</div>
-      <div>
-        <span class="eyebrow"><span class="dot"></span>Supply Chain</span>
-        <h2 style="margin-top: 14px;">Supply Chain &amp; Logistics Systems.</h2>
+      <div class="roster-group">
+        <h3>Researchers</h3>
+        <ul class="roster-list">
+          <li>
+            <span class="roster-name tbd">Researcher Name</span>
+            <span class="roster-role tbd">Research Focus · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Researcher Name</span>
+            <span class="roster-role tbd">Research Focus · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Researcher Name</span>
+            <span class="roster-role tbd">Research Focus · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Researcher Name</span>
+            <span class="roster-role tbd">Research Focus · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Researcher Name</span>
+            <span class="roster-role tbd">Research Focus · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Researcher Name</span>
+            <span class="roster-role tbd">Research Focus · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Researcher Name</span>
+            <span class="roster-role tbd">Research Focus · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Researcher Name</span>
+            <span class="roster-role tbd">Research Focus · Campus</span>
+          </li>
+        </ul>
       </div>
-      <div class="count tbd">10 RESEARCHERS<br>04 LABORATORIES</div>
-    </div>
-    <div class="people-grid">
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Laura Beltrán, PhD</h4>
-          <div class="title">Senior Researcher · Resilience &amp; Optimization</div>
-          <div class="area">Optimization · Networks</div>
-          <div class="links"><a href="#">CV</a></div>
-        </div>
-      </article>
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Andrés Pérez, PhD</h4>
-          <div class="title">Senior Researcher · Last-Mile Logistics</div>
-          <div class="area">Logistics · Urban</div>
-          <div class="links"><a href="#">CV</a></div>
-        </div>
-      </article>
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Mariana Torres, PhD</h4>
-          <div class="title">Researcher · Scope 3 &amp; Sustainability</div>
-          <div class="area">Emissions · Traceability</div>
-          <div class="links"><a href="#">CV</a></div>
-        </div>
-      </article>
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Roberto Ayala, PhD</h4>
-          <div class="title">Researcher · Warehouses of the Future</div>
-          <div class="area">Robotics · WMS</div>
-          <div class="links"><a href="#">CV</a></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
 
-<!-- AREA: LIFT -->
-<section class="area-section">
-  <div class="container">
-    <div class="area-head">
-      <div class="area-num">04</div>
-      <div>
-        <span class="eyebrow"><span class="dot"></span>LIFT Lab (In partnership with MIT CTL)</span>
-        <h2 style="margin-top: 14px;">Low-Income Firms Transformation Lab.</h2>
+      <div class="roster-group">
+        <h3>Postdoctoral Fellows</h3>
+        <ul class="roster-list">
+          <li>
+            <span class="roster-name tbd">Postdoc Name</span>
+            <span class="roster-role tbd">Research Focus · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Postdoc Name</span>
+            <span class="roster-role tbd">Research Focus · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Postdoc Name</span>
+            <span class="roster-role tbd">Research Focus · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Postdoc Name</span>
+            <span class="roster-role tbd">Research Focus · Campus</span>
+          </li>
+        </ul>
       </div>
-      <div class="count tbd">06 RESEARCHERS<br>+5K SMEs</div>
-    </div>
-    <div class="people-grid">
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Ana Lucía Estrada, PhD</h4>
-          <div class="title">Director · LIFT Lab México</div>
-          <div class="area">SMEs · Public Policy</div>
-          <div class="links"><a href="#">CV</a></div>
-        </div>
-      </article>
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Fernanda Cárdenas, PhD</h4>
-          <div class="title">Senior Researcher · AI with Sparse Data</div>
-          <div class="area">Few-shot · Vision</div>
-          <div class="links"><a href="#">CV</a></div>
-        </div>
-      </article>
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Tomás Vega, PhD</h4>
-          <div class="title">Researcher · AI Avatars &amp; Tutors</div>
-          <div class="area">NLP · Training</div>
-          <div class="links"><a href="#">CV</a></div>
-        </div>
-      </article>
-      <article class="person-card">
-        <div class="portrait" style="background-image: url('https://placehold.co/400x500/d9d4c7/5b6675?text=TBD');"></div>
-        <div class="info">
-          <h4>Valeria Núñez, PhD</h4>
-          <div class="title">Researcher · Inclusive Supply Chains</div>
-          <div class="area">Inclusion · Field Research</div>
-          <div class="links"><a href="#">CV</a></div>
-        </div>
-      </article>
+
+      <div class="roster-group">
+        <h3>Support Staff</h3>
+        <ul class="roster-list">
+          <li>
+            <span class="roster-name tbd">Staff Name</span>
+            <span class="roster-role tbd">Role · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Staff Name</span>
+            <span class="roster-role tbd">Role · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Staff Name</span>
+            <span class="roster-role tbd">Role · Campus</span>
+          </li>
+          <li>
+            <span class="roster-name tbd">Staff Name</span>
+            <span class="roster-role tbd">Role · Campus</span>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- JOIN BAND -->
-<section class="join-band" data-screen-label="03 Join">
+<section class="join-band" data-screen-label="06 Join">
   <div class="container">
     <div class="join-grid">
       <div>
